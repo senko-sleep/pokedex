@@ -1636,13 +1636,13 @@
                     <div class="unified-info-container">
                         <div class="info-navigation">
                             <button class="nav-tab active" data-tab="stats">
-                                📊 Base Stats
+                                Base Stats
                             </button>
                             <button class="nav-tab" data-tab="types">
-                                ⚔️ Type Effectiveness
+                                Type Effectiveness
                             </button>
                             <button class="nav-tab" data-tab="moves">
-                                🎯 Moves
+                                 Moves
                             </button>
                         </div>
 
@@ -2552,7 +2552,7 @@
                     const evolutionSection = document.createElement('div');
                     evolutionSection.className = 'info-section';
                     evolutionSection.innerHTML = `
-                        <div class="info-title">🔄 Evolution Chain</div>
+                        <div class="info-title">Evolution Chain</div>
                         <div class="info-content-text">
                             <div class="evolution-chain" id="evolutionChain"></div>
                         </div>
@@ -2570,7 +2570,7 @@
                     ).slice(0, 10); // Limit to first 10 locations
 
                     locationSection.innerHTML = `
-                        <div class="info-title">🗺️ Found In</div>
+                        <div class="info-title">Found In</div>
                         <div class="info-content-text">
                             <div class="location-info">
                                 ${locationNames.map(name => `<span class="location-item">${name}</span>`).join('')}
@@ -2585,7 +2585,7 @@
                     const habitatSection = document.createElement('div');
                     habitatSection.className = 'info-section';
                     habitatSection.innerHTML = `
-                        <div class="info-title">🏞️ Habitat</div>
+                        <div class="info-title">Habitat</div>
                         <div class="info-content-text">${this.formatPokemonName(pokemon.species.habitat.name)}</div>
                     `;
                     container.appendChild(habitatSection);
@@ -2595,7 +2595,7 @@
                 const physicalSection = document.createElement('div');
                 physicalSection.className = 'info-section';
                 physicalSection.innerHTML = `
-                    <div class="info-title">🎨 Physical Traits</div>
+                    <div class="info-title">Physical Traits</div>
                     <div class="info-content-text">
                         <strong>Color:</strong> ${pokemon.species.color ? this.formatPokemonName(pokemon.species.color.name) : 'Unknown'}<br>
                         <strong>Shape:</strong> ${pokemon.species.shape ? this.formatPokemonName(pokemon.species.shape.name) : 'Unknown'}
@@ -2609,7 +2609,7 @@
                 const status = pokemon.species.is_legendary ? 'Legendary' :
                     pokemon.species.is_mythical ? 'Mythical' : 'Regular';
                 statusSection.innerHTML = `
-                    <div class="info-title">⭐ Status</div>
+                    <div class="info-title">Status</div>
                     <div class="info-content-text">${status}</div>
                 `;
                 container.appendChild(statusSection);
@@ -2638,7 +2638,7 @@
                     if (evolution.evolves_to.length > 0) {
                         const arrow = document.createElement('div');
                         arrow.className = 'evolution-arrow';
-                        arrow.textContent = '→';
+                        arrow.textContent = '';
                         container.appendChild(arrow);
 
                         evolution.evolves_to.forEach(nextEvolution => {
