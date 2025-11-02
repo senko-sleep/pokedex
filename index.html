@@ -2076,7 +2076,14 @@
                     { url: sprites.other['showdown'].front_default, label: 'Showdown' },
                     { url: sprites.other['showdown'].front_shiny, label: 'Showdown Shiny' }
                 ];
-                artworkSources.forEach(source => {
+                const filteredSources = artworkSources.filter(source => {
+                    if (this.isShiny) {
+                        return source.label.includes('Shiny');
+                    } else {
+                        return !source.label.includes('Shiny');
+                    }
+                });
+                filteredSources.forEach(source => {
                     if (source.url) {
                         const artworkItem = document.createElement('div');
                         artworkItem.className = 'artwork-item';
@@ -2107,7 +2114,14 @@
                     { url: sprites.front_shiny, label: 'Front Shiny' },
                     { url: sprites.back_shiny, label: 'Back Shiny' }
                 ];
-                artworkSources.forEach(source => {
+                const filteredSources = artworkSources.filter(source => {
+                    if (this.isShiny) {
+                        return source.label.includes('Shiny');
+                    } else {
+                        return !source.label.includes('Shiny');
+                    }
+                });
+                filteredSources.forEach(source => {
                     if (source.url) {
                         const artworkItem = document.createElement('div');
                         artworkItem.className = 'mobile-artwork-item';
