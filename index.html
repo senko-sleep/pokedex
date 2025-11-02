@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Pokemon Information Viewer</title>
+    <title>Pokedex | sleep-senko</title>
     <link rel="shortcut icon" href="https://www.pokemon.com/favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
             --primary-bg: #ffffff;
             --secondary-bg: #f8fafc;
@@ -33,7 +30,6 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             font-weight: 300;
@@ -44,33 +40,27 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--secondary-bg);
             border-radius: 5px;
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--accent-color);
             border-radius: 5px;
             transition: background 0.3s ease;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-hover);
         }
-
         /* Firefox scrollbar */
         * {
             scrollbar-width: thin;
             scrollbar-color: var(--accent-color) var(--secondary-bg);
         }
-
         /* Desktop Layout */
         .desktop-layout {
             display: flex;
@@ -79,7 +69,6 @@
             padding: 20px;
             min-height: 100vh;
         }
-
         .container {
             width: 100%;
             max-width: 1200px;
@@ -89,7 +78,6 @@
             align-items: center;
             gap: 20px;
         }
-
         .header {
             text-align: center;
             padding: 30px;
@@ -99,7 +87,6 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
-
         .header h1 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -107,19 +94,16 @@
             margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
         }
-
         .header p {
             color: var(--text-primary);
             font-size: 1.1rem;
             opacity: 0.8;
         }
-
         .search-section {
             width: 100%;
             display: flex;
             justify-content: center;
         }
-
         .search-container {
             display: flex;
             gap: 12px;
@@ -127,7 +111,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .search-input {
             flex: 1;
             min-width: 250px;
@@ -146,26 +129,21 @@
             transition: all 200ms ease;
             box-shadow: var(--shadow);
         }
-
         .search-input:focus {
             outline: none;
             box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
             transform: translateY(-1px);
         }
-
         .search-input::placeholder {
             color: var(--text-muted);
             opacity: 0.7;
             transition: all 200ms ease;
         }
-
         .search-input:focus::placeholder {
             opacity: 0;
         }
-
-        .search-btn,
-        .random-btn {
+        .search-btn, .random-btn {
             border-radius: 12px;
             height: 50px;
             font-size: 14px;
@@ -185,22 +163,17 @@
             cursor: pointer;
             white-space: nowrap;
         }
-
-        .search-btn:hover,
-        .random-btn:hover {
+        .search-btn:hover, .random-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
         }
-
         .random-btn {
             background: var(--success-color);
         }
-
         .random-btn:hover {
             background: #059669;
         }
-
         .loading {
             text-align: center;
             padding: 40px;
@@ -210,7 +183,6 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
-
         .spinner {
             position: relative;
             display: inline-block;
@@ -222,17 +194,10 @@
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
         }
-
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
         .pokemon-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -242,7 +207,6 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
-
         .pokemon-main-content {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -250,7 +214,6 @@
             margin-bottom: 25px;
             align-items: start;
         }
-
         .pokemon-left-panel {
             display: flex;
             flex-direction: column;
@@ -258,7 +221,6 @@
             gap: 20px;
             width: 350px;
         }
-
         .pokemon-image-container {
             position: relative;
             width: 300px;
@@ -272,7 +234,6 @@
             justify-content: center;
             border: 2px solid var(--border-color);
         }
-
         .pokemon-image {
             width: 90%;
             height: 90%;
@@ -280,18 +241,15 @@
             transition: transform 0.3s ease;
             cursor: pointer;
         }
-
         .pokemon-image:hover {
             transform: scale(1.05);
         }
-
         .sound-controls {
             display: flex;
             gap: 12px;
             align-items: center;
             margin: 15px 0;
         }
-
         .sound-btn {
             background: var(--accent-color);
             color: white;
@@ -304,13 +262,11 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
-
         .sound-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .artwork-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
@@ -319,7 +275,6 @@
             width: 100%;
             max-width: 340px;
         }
-
         .artwork-item {
             width: 85px;
             height: 85px;
@@ -330,33 +285,28 @@
             border: 2px solid var(--border-color);
             box-shadow: var(--shadow);
         }
-
         .artwork-item:hover {
             transform: scale(1.1);
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
-
         .artwork-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: var(--secondary-bg);
         }
-
         .pokemon-right-panel {
             display: flex;
             flex-direction: column;
             gap: 20px;
             min-width: 400px;
         }
-
         .pokemon-header {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-
         .pokemon-title {
             font-size: 3rem;
             font-weight: 700;
@@ -364,21 +314,18 @@
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
             margin: 0;
         }
-
         .pokemon-id {
             color: var(--text-muted);
             font-size: 1.3rem;
             font-weight: 600;
             margin: 0;
         }
-
         .pokemon-types {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
             margin: 15px 0;
         }
-
         .type-badge {
             padding: 10px 18px;
             border-radius: 30px;
@@ -392,7 +339,6 @@
             gap: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .type-icon {
             width: 18px;
             height: 18px;
@@ -400,98 +346,25 @@
             display: inline-block;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-
         /* Type colors */
-        .type-normal {
-            background: #A8A878;
-            color: #000;
-        }
-
-        .type-fire {
-            background: #F08030;
-            color: #fff;
-        }
-
-        .type-water {
-            background: #6890F0;
-            color: #fff;
-        }
-
-        .type-electric {
-            background: #F8D030;
-            color: #000;
-        }
-
-        .type-grass {
-            background: #78C850;
-            color: #000;
-        }
-
-        .type-ice {
-            background: #98D8D8;
-            color: #000;
-        }
-
-        .type-fighting {
-            background: #C03028;
-            color: #fff;
-        }
-
-        .type-poison {
-            background: #A040A0;
-            color: #fff;
-        }
-
-        .type-ground {
-            background: #E0C068;
-            color: #000;
-        }
-
-        .type-flying {
-            background: #A890F0;
-            color: #fff;
-        }
-
-        .type-psychic {
-            background: #F85888;
-            color: #fff;
-        }
-
-        .type-bug {
-            background: #A8B820;
-            color: #fff;
-        }
-
-        .type-rock {
-            background: #B8A038;
-            color: #fff;
-        }
-
-        .type-ghost {
-            background: #705898;
-            color: #fff;
-        }
-
-        .type-dragon {
-            background: #7038F8;
-            color: #fff;
-        }
-
-        .type-dark {
-            background: #705848;
-            color: #fff;
-        }
-
-        .type-steel {
-            background: #B8B8D0;
-            color: #000;
-        }
-
-        .type-fairy {
-            background: #EE99AC;
-            color: #000;
-        }
-
+        .type-normal { background: #A8A878; color: #000; }
+        .type-fire { background: #F08030; color: #fff; }
+        .type-water { background: #6890F0; color: #fff; }
+        .type-electric { background: #F8D030; color: #000; }
+        .type-grass { background: #78C850; color: #000; }
+        .type-ice { background: #98D8D8; color: #000; }
+        .type-fighting { background: #C03028; color: #fff; }
+        .type-poison { background: #A040A0; color: #fff; }
+        .type-ground { background: #E0C068; color: #000; }
+        .type-flying { background: #A890F0; color: #fff; }
+        .type-psychic { background: #F85888; color: #fff; }
+        .type-bug { background: #A8B820; color: #fff; }
+        .type-rock { background: #B8A038; color: #fff; }
+        .type-ghost { background: #705898; color: #fff; }
+        .type-dragon { background: #7038F8; color: #fff; }
+        .type-dark { background: #705848; color: #fff; }
+        .type-steel { background: #B8B8D0; color: #000; }
+        .type-fairy { background: #EE99AC; color: #000; }
         .pokemon-description {
             color: var(--text-primary);
             font-size: 1.15rem;
@@ -502,13 +375,11 @@
             border-left: 4px solid var(--accent-color);
             box-shadow: var(--shadow);
         }
-
         .pokemon-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
-
         .detail-item {
             background: var(--secondary-bg);
             padding: 15px;
@@ -517,12 +388,10 @@
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
-
         .detail-item:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .detail-label {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -531,13 +400,11 @@
             letter-spacing: 0.5px;
             font-weight: 600;
         }
-
         .detail-value {
             color: var(--text-primary);
             font-size: 1.15rem;
             font-weight: 600;
         }
-
         .controls {
             display: flex;
             gap: 15px;
@@ -545,7 +412,6 @@
             justify-content: center;
             margin: 25px 0;
         }
-
         .control-btn {
             border-radius: 12px;
             height: 45px;
@@ -565,18 +431,15 @@
             box-shadow: var(--shadow-lg);
             cursor: pointer;
         }
-
         .control-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
         }
-
         .control-btn.active {
             background: var(--accent-hover);
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
         }
-
         .form-selector {
             height: 45px;
             padding: 0 18px;
@@ -590,13 +453,11 @@
             font-size: 14px;
             font-weight: 500;
         }
-
         .form-selector:focus {
             outline: none;
             box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
         }
-
         /* Unified Container for Stats, Type Effectiveness, and Moves */
         .unified-info-container {
             background: var(--secondary-bg);
@@ -607,7 +468,6 @@
             margin-top: 25px;
             width: 100%;
         }
-
         .info-navigation {
             display: flex;
             background: var(--card-bg);
@@ -617,7 +477,6 @@
             box-shadow: var(--shadow);
             gap: 5px;
         }
-
         .nav-tab {
             flex: 1;
             padding: 15px 20px;
@@ -636,46 +495,33 @@
             justify-content: center;
             gap: 8px;
         }
-
         .nav-tab.active {
             background: var(--accent-color);
             color: white;
             box-shadow: var(--shadow);
             transform: translateY(-1px);
         }
-
         .nav-tab:hover:not(.active) {
             background: var(--accent-bg);
             color: var(--accent-color);
         }
-
         .info-content {
             display: none;
             animation: fadeIn 0.3s ease-in-out;
         }
-
         .info-content.active {
             display: block;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         /* Updated Desktop Stats to match Mobile Style */
         .desktop-stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
-
         .desktop-stat-item {
             background: var(--card-bg);
             padding: 15px;
@@ -685,12 +531,10 @@
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
-
         .desktop-stat-item:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .desktop-stat-name {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -699,14 +543,12 @@
             margin-bottom: 8px;
             letter-spacing: 0.5px;
         }
-
         .desktop-stat-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 8px;
         }
-
         .desktop-stat-bar {
             width: 100%;
             height: 8px;
@@ -715,40 +557,32 @@
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .desktop-stat-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
             border-radius: 4px;
         }
-
         .desktop-total-stats {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             color: white;
             border: none;
         }
-
-        .desktop-total-stats .desktop-stat-name,
-        .desktop-total-stats .desktop-stat-value {
+        .desktop-total-stats .desktop-stat-name, .desktop-total-stats .desktop-stat-value {
             color: white;
         }
-
         .desktop-total-stats .desktop-stat-bar {
             background: rgba(255, 255, 255, 0.2);
         }
-
         .desktop-total-stats .desktop-stat-fill {
             background: rgba(255, 255, 255, 0.8);
         }
-
         .type-effectiveness {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
         .effectiveness-section {
             background: var(--card-bg);
             border-radius: 12px;
@@ -756,7 +590,6 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
-
         .effectiveness-title {
             font-size: 1.2rem;
             font-weight: 700;
@@ -766,13 +599,11 @@
             align-items: center;
             gap: 8px;
         }
-
         .effectiveness-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-
         .effectiveness-item {
             padding: 8px 15px;
             border-radius: 20px;
@@ -785,36 +616,30 @@
             transition: all 0.2s ease;
             box-shadow: var(--shadow);
         }
-
         .effectiveness-item:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
-
         .weakness {
             background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
-
         .strength {
             background: rgba(16, 185, 129, 0.1);
             color: #059669;
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
-
         .resistance {
             background: rgba(59, 130, 246, 0.1);
             color: #2563eb;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
-
         .immunity {
             background: rgba(107, 114, 128, 0.1);
             color: #374151;
             border: 1px solid rgba(107, 114, 128, 0.2);
         }
-
         .moves-list {
             max-height: 400px;
             overflow-y: auto;
@@ -822,7 +647,6 @@
             flex-direction: column;
             gap: 10px;
         }
-
         .move-item {
             background: var(--card-bg);
             padding: 15px;
@@ -831,25 +655,21 @@
             box-shadow: var(--shadow);
             transition: all 0.2s ease;
         }
-
         .move-item:hover {
             transform: translateY(-1px);
             box-shadow: var(--shadow-lg);
         }
-
         .move-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
         }
-
         .move-name {
             font-weight: 700;
             color: var(--text-secondary);
             font-size: 1.1rem;
         }
-
         .move-type-badge {
             padding: 4px 12px;
             border-radius: 15px;
@@ -858,14 +678,12 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
         .move-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
             margin-top: 8px;
         }
-
         .move-stat {
             text-align: center;
             padding: 6px;
@@ -873,7 +691,6 @@
             border-radius: 6px;
             border: 1px solid var(--border-color);
         }
-
         .move-stat-label {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -881,20 +698,17 @@
             font-weight: 600;
             margin-bottom: 2px;
         }
-
         .move-stat-value {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
         }
-
         .additional-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 25px;
         }
-
         .info-section {
             background: var(--secondary-bg);
             border-radius: 12px;
@@ -903,20 +717,17 @@
             box-shadow: var(--shadow);
             width: 100%;
         }
-
         .info-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 12px;
         }
-
         .info-content-text {
             color: var(--text-primary);
             font-size: 1rem;
             line-height: 1.5;
         }
-
         .evolution-chain {
             display: flex;
             align-items: center;
@@ -924,7 +735,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .evolution-item {
             display: flex;
             flex-direction: column;
@@ -938,35 +748,29 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-
         .evolution-item:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
-
         .evolution-image {
             width: 65px;
             height: 65px;
             object-fit: contain;
         }
-
         .evolution-name {
             font-size: 0.85rem;
             font-weight: 600;
             text-align: center;
         }
-
         .evolution-arrow {
             font-size: 1.8rem;
             color: var(--accent-color);
         }
-
         .location-info {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-
         .location-item {
             background: var(--accent-color);
             color: white;
@@ -976,7 +780,6 @@
             font-weight: 500;
             box-shadow: var(--shadow);
         }
-
         .error-message {
             background: rgba(239, 68, 68, 0.1);
             border: 2px solid rgba(239, 68, 68, 0.2);
@@ -988,7 +791,6 @@
             box-shadow: var(--shadow-lg);
             width: 100%;
         }
-
         .modal {
             display: none;
             position: fixed;
@@ -1000,13 +802,11 @@
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
-
         .modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .modal-content {
             background: var(--card-bg);
             border-radius: 16px;
@@ -1018,12 +818,10 @@
             border: 1px solid var(--border-color);
             width: fit-content;
         }
-
         .modal img {
             max-width: 100%;
             height: auto;
         }
-
         .close-btn {
             background: var(--error-color);
             color: white;
@@ -1035,19 +833,16 @@
             margin-bottom: 15px;
             box-shadow: var(--shadow);
         }
-
         /* Mobile Layout - Enhanced for Feature Parity */
         .mobile-layout {
             display: none;
             padding: 10px;
             background: var(--primary-bg);
         }
-
         .mobile-container {
             width: 100%;
             margin: 0 auto;
         }
-
         .mobile-header {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1057,19 +852,16 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
-
         .mobile-header h1 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 5px;
         }
-
         .mobile-header p {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
-
         .mobile-search {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1078,7 +870,6 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
-
         .mobile-search-input {
             width: 100%;
             padding: 15px;
@@ -1089,18 +880,15 @@
             background: var(--secondary-bg);
             box-shadow: var(--shadow);
         }
-
         .mobile-search-input:focus {
             outline: none;
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
-
         .mobile-search-buttons {
             display: flex;
             gap: 10px;
         }
-
         .mobile-btn {
             flex: 1;
             padding: 12px;
@@ -1112,22 +900,18 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
-
         .mobile-search-btn {
             background: var(--accent-color);
             color: white;
         }
-
         .mobile-random-btn {
             background: var(--success-color);
             color: white;
         }
-
         .mobile-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .mobile-loading {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1136,7 +920,6 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
-
         .mobile-pokemon-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1145,7 +928,6 @@
             overflow: hidden;
             width: 100%;
         }
-
         .mobile-pokemon-hero {
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             padding: 25px;
@@ -1153,7 +935,6 @@
             color: white;
             position: relative;
         }
-
         .mobile-pokemon-image {
             width: 200px;
             height: 200px;
@@ -1166,31 +947,26 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-
         .mobile-pokemon-image:hover {
             transform: scale(1.05);
         }
-
         .mobile-pokemon-title {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-
         .mobile-pokemon-id {
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 15px;
         }
-
         .mobile-pokemon-types {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .mobile-type-badge {
             padding: 8px 16px;
             border-radius: 25px;
@@ -1205,7 +981,6 @@
             align-items: center;
             gap: 6px;
         }
-
         .mobile-controls {
             padding: 20px;
             background: var(--secondary-bg);
@@ -1214,7 +989,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .mobile-control-btn {
             padding: 10px 16px;
             border: none;
@@ -1227,16 +1001,13 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
-
         .mobile-control-btn:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
-
         .mobile-content {
             padding: 20px;
         }
-
         .mobile-description {
             background: var(--secondary-bg);
             padding: 15px;
@@ -1247,7 +1018,6 @@
             box-shadow: var(--shadow);
             border-left: 4px solid var(--accent-color);
         }
-
         .mobile-tabs {
             display: flex;
             background: var(--secondary-bg);
@@ -1256,7 +1026,6 @@
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
-
         .mobile-tab {
             flex: 1;
             padding: 12px 8px;
@@ -1269,13 +1038,11 @@
             transition: all 0.3s ease;
             color: var(--text-muted);
         }
-
         .mobile-tab.active {
             background: var(--accent-color);
             color: white;
             box-shadow: var(--shadow);
         }
-
         .mobile-tab-content {
             display: none;
             background: var(--secondary-bg);
@@ -1283,17 +1050,14 @@
             padding: 20px;
             box-shadow: var(--shadow);
         }
-
         .mobile-tab-content.active {
             display: block;
         }
-
         .mobile-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
-
         .mobile-stat-item {
             background: var(--card-bg);
             padding: 15px;
@@ -1302,7 +1066,6 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-
         .mobile-stat-name {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -1310,13 +1073,11 @@
             font-weight: 600;
             margin-bottom: 5px;
         }
-
         .mobile-stat-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-secondary);
         }
-
         .mobile-stat-bar {
             width: 100%;
             height: 6px;
@@ -1325,39 +1086,31 @@
             margin-top: 8px;
             overflow: hidden;
         }
-
         .mobile-stat-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
         }
-
         .mobile-total-stats {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             color: white;
             border: none;
         }
-
-        .mobile-total-stats .mobile-stat-name,
-        .mobile-total-stats .mobile-stat-value {
+        .mobile-total-stats .mobile-stat-name, .mobile-total-stats .mobile-stat-value {
             color: white;
         }
-
         .mobile-total-stats .mobile-stat-bar {
             background: rgba(255, 255, 255, 0.2);
         }
-
         .mobile-total-stats .mobile-stat-fill {
             background: rgba(255, 255, 255, 0.8);
         }
-
         .mobile-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
-
         .mobile-detail-item {
             background: var(--card-bg);
             padding: 12px;
@@ -1365,7 +1118,6 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-
         .mobile-detail-label {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -1373,18 +1125,15 @@
             font-weight: 600;
             margin-bottom: 4px;
         }
-
         .mobile-detail-value {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
         }
-
         .mobile-moves-list {
             max-height: 300px;
             overflow-y: auto;
         }
-
         .mobile-move-item {
             background: var(--card-bg);
             padding: 15px;
@@ -1393,20 +1142,17 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-
         .mobile-move-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
         }
-
         .mobile-move-name {
             font-weight: 700;
             color: var(--text-secondary);
             font-size: 1rem;
         }
-
         .mobile-move-type-badge {
             padding: 3px 8px;
             border-radius: 12px;
@@ -1414,14 +1160,12 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-
         .mobile-move-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             margin-top: 8px;
         }
-
         .mobile-move-stat {
             text-align: center;
             padding: 4px;
@@ -1429,7 +1173,6 @@
             border-radius: 6px;
             border: 1px solid var(--border-color);
         }
-
         .mobile-move-stat-label {
             font-size: 0.65rem;
             color: var(--text-muted);
@@ -1437,19 +1180,16 @@
             font-weight: 600;
             margin-bottom: 2px;
         }
-
         .mobile-move-stat-value {
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-primary);
         }
-
         .mobile-effectiveness-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
         }
-
         .mobile-effectiveness-section {
             background: var(--card-bg);
             padding: 15px;
@@ -1457,20 +1197,17 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-
         .mobile-effectiveness-title {
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--text-secondary);
         }
-
         .mobile-effectiveness-list {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
-
         .mobile-effectiveness-item {
             padding: 6px 12px;
             border-radius: 15px;
@@ -1481,7 +1218,6 @@
             align-items: center;
             gap: 6px;
         }
-
         /* Enhanced Artwork Gallery for Mobile */
         .mobile-artwork-section {
             background: var(--secondary-bg);
@@ -1490,7 +1226,6 @@
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
-
         .mobile-artwork-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -1498,7 +1233,6 @@
             margin-bottom: 15px;
             text-align: center;
         }
-
         .mobile-artwork-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
@@ -1506,7 +1240,6 @@
             max-height: 200px;
             overflow-y: auto;
         }
-
         .mobile-artwork-item {
             width: 70px;
             height: 70px;
@@ -1517,59 +1250,41 @@
             border: 2px solid var(--border-color);
             box-shadow: var(--shadow);
         }
-
         .mobile-artwork-item:hover {
             transform: scale(1.1);
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
-
         .mobile-artwork-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: var(--card-bg);
         }
-
         /* Media Queries */
         @media (max-width: 768px) {
-            .desktop-layout {
-                display: none;
-            }
-
-            .mobile-layout {
-                display: block;
-            }
+            .desktop-layout { display: none; }
+            .mobile-layout { display: block; }
         }
-
         @media (min-width: 769px) {
-            .desktop-layout {
-                display: flex;
-            }
-
-            .mobile-layout {
-                display: none;
-            }
+            .desktop-layout { display: flex; }
+            .mobile-layout { display: none; }
         }
-
         /* Desktop responsive adjustments */
         @media (max-width: 1200px) and (min-width: 769px) {
             .pokemon-main-content {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-
             .pokemon-left-panel {
                 width: 100%;
             }
-
             .pokemon-right-panel {
                 min-width: auto;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Desktop Layout -->
     <div class="desktop-layout">
@@ -1578,23 +1293,18 @@
                 <h1>Pokemon Information</h1>
                 <p>Research a Pokemon - sounds, artwork, locations, and more!</p>
             </header>
-
             <section class="search-section">
                 <div class="search-container">
-                    <input type="text" class="search-input" id="searchInput"
-                        placeholder="Enter Pokemon name or ID (e.g., pikachu, 25)">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Enter Pokemon name or ID (e.g., pikachu, 25)">
                     <button class="search-btn" id="searchBtn">Search</button>
                     <button class="random-btn" id="randomBtn">Random Pokemon</button>
                 </div>
             </section>
-
             <div id="loadingDiv" class="loading" style="display: none;">
                 <div class="spinner"></div>
                 <p>Loading comprehensive Pokemon data...</p>
             </div>
-
             <div id="errorDiv" class="error-message" style="display: none;"></div>
-
             <div id="pokemonContainer" style="display: none;">
                 <div class="pokemon-card">
                     <div class="pokemon-main-content">
@@ -1602,14 +1312,11 @@
                             <div class="pokemon-image-container">
                                 <img id="pokemonImage" class="pokemon-image" alt="Pokemon Image">
                             </div>
-
                             <div class="sound-controls">
                                 <button id="playCry" class="sound-btn">🔊 Play Cry</button>
                                 <button id="playLatestCry" class="sound-btn">🎵 Latest Cry</button>
                             </div>
-
                             <div class="artwork-gallery" id="artworkGallery"></div>
-
                             <div class="controls">
                                 <button id="shinyToggle" class="control-btn">✨ Toggle Shiny</button>
                                 <select id="formSelector" class="form-selector" style="display: none;">
@@ -1617,7 +1324,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="pokemon-right-panel">
                             <div class="pokemon-header">
                                 <h2 id="pokemonTitle" class="pokemon-title"></h2>
@@ -1625,31 +1331,20 @@
                                 <div id="pokemonTypes" class="pokemon-types"></div>
                                 <div id="pokemonDescription" class="pokemon-description"></div>
                             </div>
-
                             <div class="pokemon-details" id="pokemonDetails"></div>
-
                             <div class="additional-info" id="additionalInfo"></div>
                         </div>
                     </div>
-
                     <!-- Unified Container for Stats, Type Effectiveness, and Moves -->
                     <div class="unified-info-container">
                         <div class="info-navigation">
-                            <button class="nav-tab active" data-tab="stats">
-                                Base Stats
-                            </button>
-                            <button class="nav-tab" data-tab="types">
-                                Type Effectiveness
-                            </button>
-                            <button class="nav-tab" data-tab="moves">
-                                 Moves
-                            </button>
+                            <button class="nav-tab active" data-tab="stats"> Base Stats </button>
+                            <button class="nav-tab" data-tab="types"> Type Effectiveness </button>
+                            <button class="nav-tab" data-tab="moves"> Moves </button>
                         </div>
-
                         <div id="statsContent" class="info-content active">
                             <div id="statsList" class="desktop-stats-grid"></div>
                         </div>
-
                         <div id="typesContent" class="info-content">
                             <div class="type-effectiveness">
                                 <div class="effectiveness-section">
@@ -1670,7 +1365,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="movesContent" class="info-content">
                             <div id="movesList" class="moves-list"></div>
                         </div>
@@ -1679,7 +1373,6 @@
             </div>
         </div>
     </div>
-
     <!-- Mobile Layout -->
     <div class="mobile-layout">
         <div class="mobile-container">
@@ -1687,23 +1380,18 @@
                 <h1>Pokemon Info</h1>
                 <p>Discover Pokemon on mobile!</p>
             </div>
-
             <div class="mobile-search">
-                <input type="text" class="mobile-search-input" id="mobileSearchInput"
-                    placeholder="Pokemon name or ID...">
+                <input type="text" class="mobile-search-input" id="mobileSearchInput" placeholder="Pokemon name or ID...">
                 <div class="mobile-search-buttons">
                     <button class="mobile-btn mobile-search-btn" id="mobileSearchBtn">Search</button>
                     <button class="mobile-btn mobile-random-btn" id="mobileRandomBtn">Random</button>
                 </div>
             </div>
-
             <div id="mobileLoadingDiv" class="mobile-loading" style="display: none;">
                 <div class="spinner"></div>
                 <p>Loading Pokemon...</p>
             </div>
-
             <div id="mobileErrorDiv" class="error-message" style="display: none;"></div>
-
             <div id="mobilePokemonContainer" style="display: none;">
                 <div class="mobile-pokemon-card">
                     <div class="mobile-pokemon-hero">
@@ -1712,40 +1400,32 @@
                         <p id="mobilePokemonId" class="mobile-pokemon-id"></p>
                         <div id="mobilePokemonTypes" class="mobile-pokemon-types"></div>
                     </div>
-
                     <div class="mobile-controls">
                         <button id="mobileShinyToggle" class="mobile-control-btn">✨ Shiny</button>
                         <button id="mobilePlayCry" class="mobile-control-btn">🔊 Cry</button>
                         <button id="mobilePlayLatestCry" class="mobile-control-btn">🎵 Latest</button>
                     </div>
-
                     <div class="mobile-content">
                         <div id="mobilePokemonDescription" class="mobile-description"></div>
-
                         <div class="mobile-artwork-section">
                             <div class="mobile-artwork-title">🎨 Artwork Gallery</div>
                             <div id="mobileArtworkGallery" class="mobile-artwork-gallery"></div>
                         </div>
-
                         <div class="mobile-tabs">
                             <button class="mobile-tab active" data-tab="stats">Stats</button>
                             <button class="mobile-tab" data-tab="details">Details</button>
                             <button class="mobile-tab" data-tab="moves">Moves</button>
                             <button class="mobile-tab" data-tab="types">Types</button>
                         </div>
-
                         <div id="mobileStatsTab" class="mobile-tab-content active">
                             <div id="mobileStatsList" class="mobile-stats-grid"></div>
                         </div>
-
                         <div id="mobileDetailsTab" class="mobile-tab-content">
                             <div id="mobilePokemonDetails" class="mobile-details-grid"></div>
                         </div>
-
                         <div id="mobileMovesTab" class="mobile-tab-content">
                             <div id="mobileMovesList" class="mobile-moves-list"></div>
                         </div>
-
                         <div id="mobileTypesTab" class="mobile-tab-content">
                             <div id="mobileTypeEffectiveness" class="mobile-effectiveness-grid"></div>
                         </div>
@@ -1754,7 +1434,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal for enlarged artwork -->
     <div id="artworkModal" class="modal">
         <div class="modal-content">
@@ -1762,7 +1441,6 @@
             <img id="modalImage" alt="Pokemon Artwork">
         </div>
     </div>
-
     <script>
         class UltimatePokemonViewer {
             constructor() {
@@ -1775,19 +1453,39 @@
                 this.activeTab = 'stats';
                 this.activeDesktopTab = 'stats';
                 this.types = [
-                    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison',
-                    'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
+                    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground',
+                    'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
                 ];
                 this.typeColors = {
-                    'normal': '#A8A878', 'fire': '#F08030', 'water': '#6890F0', 'electric': '#F8D030',
-                    'grass': '#78C850', 'ice': '#98D8D8', 'fighting': '#C03028', 'poison': '#A040A0',
-                    'ground': '#E0C068', 'flying': '#A890F0', 'psychic': '#F85888', 'bug': '#A8B820',
-                    'rock': '#B8A038', 'ghost': '#705898', 'dragon': '#7038F8', 'dark': '#705848',
-                    'steel': '#B8B8D0', 'fairy': '#EE99AC'
+                    'normal': '#A8A878',
+                    'fire': '#F08030',
+                    'water': '#6890F0',
+                    'electric': '#F8D030',
+                    'grass': '#78C850',
+                    'ice': '#98D8D8',
+                    'fighting': '#C03028',
+                    'poison': '#A040A0',
+                    'ground': '#E0C068',
+                    'flying': '#A890F0',
+                    'psychic': '#F85888',
+                    'bug': '#A8B820',
+                    'rock': '#B8A038',
+                    'ghost': '#705898',
+                    'dragon': '#7038F8',
+                    'dark': '#705848',
+                    'steel': '#B8B8D0',
+                    'fairy': '#EE99AC'
                 };
                 this.regionData = {
-                    1: 'Kanto', 2: 'Johto', 3: 'Hoenn', 4: 'Sinnoh', 5: 'Unova',
-                    6: 'Kalos', 7: 'Alola', 8: 'Galar', 9: 'Paldea'
+                    1: 'Kanto',
+                    2: 'Johto',
+                    3: 'Hoenn',
+                    4: 'Sinnoh',
+                    5: 'Unova',
+                    6: 'Kalos',
+                    7: 'Alola',
+                    8: 'Galar',
+                    9: 'Paldea'
                 };
                 this.init();
             }
@@ -1823,9 +1521,7 @@
 
                 // Desktop bindings
                 if (searchBtn) searchBtn.addEventListener('click', () => this.searchPokemon());
-                if (searchInput) searchInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.searchPokemon();
-                });
+                if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.searchPokemon(); });
                 if (randomBtn) randomBtn.addEventListener('click', () => this.loadRandomPokemon());
                 if (shinyToggle) shinyToggle.addEventListener('click', () => this.toggleShiny());
                 if (formSelector) formSelector.addEventListener('change', (e) => this.loadPokemonForm(e.target.value));
@@ -1834,9 +1530,7 @@
 
                 // Mobile bindings
                 if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', () => this.searchPokemon(true));
-                if (mobileSearchInput) mobileSearchInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.searchPokemon(true);
-                });
+                if (mobileSearchInput) mobileSearchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.searchPokemon(true); });
                 if (mobileRandomBtn) mobileRandomBtn.addEventListener('click', () => this.loadRandomPokemon());
                 if (mobileShinyToggle) mobileShinyToggle.addEventListener('click', () => this.toggleShiny());
                 if (mobilePlayCry) mobilePlayCry.addEventListener('click', () => this.playPokemonCry('legacy'));
@@ -1844,9 +1538,7 @@
 
                 // Modal bindings
                 if (closeModal) closeModal.addEventListener('click', () => this.closeModal());
-                if (modal) modal.addEventListener('click', (e) => {
-                    if (e.target === modal) this.closeModal();
-                });
+                if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) this.closeModal(); });
 
                 // Desktop navigation tabs
                 document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -1869,7 +1561,6 @@
             handleResize() {
                 const wasMobile = this.isMobile;
                 this.isMobile = window.innerWidth <= 768;
-
                 if (wasMobile !== this.isMobile && this.currentPokemon) {
                     // Re-display Pokemon when switching between mobile/desktop
                     this.displayPokemon(this.currentPokemon);
@@ -1878,13 +1569,11 @@
 
             switchDesktopTab(tabName) {
                 this.activeDesktopTab = tabName;
-
                 // Update tab buttons
                 document.querySelectorAll('.nav-tab').forEach(tab => {
                     tab.classList.remove('active');
                 });
                 document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
                 // Update tab content
                 document.querySelectorAll('.info-content').forEach(content => {
                     content.classList.remove('active');
@@ -1894,13 +1583,11 @@
 
             switchMobileTab(tabName) {
                 this.activeTab = tabName;
-
                 // Update tab buttons
                 document.querySelectorAll('.mobile-tab').forEach(tab => {
                     tab.classList.remove('active');
                 });
                 document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
                 // Update tab content
                 document.querySelectorAll('.mobile-tab-content').forEach(content => {
                     content.classList.remove('active');
@@ -1909,9 +1596,7 @@
             }
 
             async searchPokemon(isMobile = false) {
-                const searchInput = isMobile ?
-                    document.getElementById('mobileSearchInput') :
-                    document.getElementById('searchInput');
+                const searchInput = isMobile ? document.getElementById('mobileSearchInput') : document.getElementById('searchInput');
                 const query = searchInput.value.trim().toLowerCase();
                 if (!query) {
                     this.showError('Please enter a Pokemon name or ID', isMobile);
@@ -1935,27 +1620,22 @@
                         this.showLoading(false);
                         return;
                     }
-
                     // Load Pokemon data
                     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
                     if (!response.ok) throw new Error('Pokemon not found');
                     const pokemon = await response.json();
-
                     // Load species data
                     const speciesResponse = await fetch(pokemon.species.url);
                     const species = await speciesResponse.json();
-
                     // Load evolution chain
                     let evolutionChain = null;
                     if (species.evolution_chain) {
                         const evolutionResponse = await fetch(species.evolution_chain.url);
                         evolutionChain = await evolutionResponse.json();
                     }
-
                     // Load location data
                     const locationResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/encounters`);
                     const locations = await locationResponse.json();
-
                     // Load enhanced moves data (first 30 moves with full details)
                     const movesData = await Promise.all(
                         pokemon.moves.slice(0, 30).map(async (move) => {
@@ -1973,10 +1653,8 @@
                             }
                         })
                     );
-
                     // Filter out failed move loads
                     const validMovesData = movesData.filter(move => move !== null);
-
                     // Combine all data
                     const pokemonData = {
                         ...pokemon,
@@ -1985,7 +1663,6 @@
                         locations: locations,
                         movesData: validMovesData
                     };
-
                     this.cache.set(cacheKey, pokemonData);
                     this.currentPokemon = pokemonData;
                     this.displayPokemon(pokemonData);
@@ -2005,10 +1682,8 @@
                 try {
                     const response = await fetch(formUrl);
                     const pokemon = await response.json();
-
                     const speciesResponse = await fetch(pokemon.species.url);
                     const species = await speciesResponse.json();
-
                     const pokemonData = { ...pokemon, species: species };
                     this.currentPokemon = pokemonData;
                     this.displayPokemon(pokemonData);
@@ -2024,11 +1699,8 @@
                     const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
                     const species = await response.json();
                     const formSelector = document.getElementById('formSelector');
-
                     if (!formSelector) return;
-
                     formSelector.innerHTML = '<option value="">Select Form</option>';
-
                     if (species.varieties && species.varieties.length > 1) {
                         species.varieties.forEach(variety => {
                             const option = document.createElement('option');
@@ -2069,36 +1741,28 @@
                 const description = document.getElementById('pokemonDescription');
                 const details = document.getElementById('pokemonDetails');
                 const additionalInfo = document.getElementById('additionalInfo');
-
                 if (!container) return;
-
                 // Basic info
                 title.textContent = this.formatPokemonName(pokemon.name);
                 id.textContent = `#${pokemon.id.toString().padStart(4, '0')}`;
-
                 // Main image
                 const imageUrl = this.isShiny
                     ? pokemon.sprites.other['official-artwork'].front_shiny || pokemon.sprites.front_shiny
                     : pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default;
                 image.src = imageUrl;
                 image.alt = pokemon.name;
-
                 // Types with icons
                 types.innerHTML = '';
                 pokemon.types.forEach(typeInfo => {
                     const typeBadge = document.createElement('span');
                     typeBadge.className = `type-badge type-${typeInfo.type.name}`;
-
                     const typeIcon = this.createTypeIcon(typeInfo.type.name);
                     typeBadge.appendChild(typeIcon);
-
                     const typeText = document.createElement('span');
                     typeText.textContent = typeInfo.type.name;
                     typeBadge.appendChild(typeText);
-
                     types.appendChild(typeBadge);
                 });
-
                 // Description
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
@@ -2106,7 +1770,6 @@
                 description.textContent = englishEntry
                     ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
                     : 'No description available.';
-
                 // Display all sections
                 this.displayArtworkGallery(pokemon);
                 this.displayPokemonDetails(pokemon, details);
@@ -2114,14 +1777,12 @@
                 this.displayDesktopStats(pokemon);
                 this.displayTypeEffectiveness(pokemon);
                 this.displayDesktopMoves(pokemon);
-
                 // Update shiny toggle
                 const shinyToggle = document.getElementById('shinyToggle');
                 if (shinyToggle) {
                     shinyToggle.textContent = this.isShiny ? '✨ Normal Mode' : '✨ Shiny Mode';
                     shinyToggle.classList.toggle('active', this.isShiny);
                 }
-
                 container.style.display = 'block';
             }
 
@@ -2132,36 +1793,28 @@
                 const image = document.getElementById('mobilePokemonImage');
                 const types = document.getElementById('mobilePokemonTypes');
                 const description = document.getElementById('mobilePokemonDescription');
-
                 if (!container) return;
-
                 // Basic info
                 title.textContent = this.formatPokemonName(pokemon.name);
                 id.textContent = `#${pokemon.id.toString().padStart(4, '0')}`;
-
                 // Main image
                 const imageUrl = this.isShiny
                     ? pokemon.sprites.other['official-artwork'].front_shiny || pokemon.sprites.front_shiny
                     : pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default;
                 image.src = imageUrl;
                 image.alt = pokemon.name;
-
                 // Types with icons
                 types.innerHTML = '';
                 pokemon.types.forEach(typeInfo => {
                     const typeBadge = document.createElement('span');
                     typeBadge.className = 'mobile-type-badge';
-
                     const typeIcon = this.createTypeIcon(typeInfo.type.name);
                     typeBadge.appendChild(typeIcon);
-
                     const typeText = document.createElement('span');
                     typeText.textContent = typeInfo.type.name;
                     typeBadge.appendChild(typeText);
-
                     types.appendChild(typeBadge);
                 });
-
                 // Description
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
@@ -2169,29 +1822,24 @@
                 description.textContent = englishEntry
                     ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
                     : 'No description available.';
-
                 // Display mobile sections
                 this.displayMobileArtworkGallery(pokemon);
                 this.displayMobileStats(pokemon);
                 this.displayMobileDetails(pokemon);
                 this.displayMobileMoves(pokemon);
                 this.displayMobileTypeEffectiveness(pokemon);
-
                 // Update shiny toggle
                 const shinyToggle = document.getElementById('mobileShinyToggle');
                 if (shinyToggle) {
                     shinyToggle.textContent = this.isShiny ? '✨ Normal' : '✨ Shiny';
                 }
-
                 container.style.display = 'block';
             }
 
             displayDesktopStats(pokemon) {
                 const statsList = document.getElementById('statsList');
                 if (!statsList) return;
-
                 statsList.innerHTML = '';
-
                 const statNames = {
                     'hp': 'HP',
                     'attack': 'ATK',
@@ -2200,31 +1848,27 @@
                     'special-defense': 'SP.DEF',
                     'speed': 'SPD'
                 };
-
                 pokemon.stats.forEach(stat => {
                     const statItem = document.createElement('div');
                     statItem.className = 'desktop-stat-item';
                     const percentage = Math.min((stat.base_stat / 255) * 100, 100);
-
                     statItem.innerHTML = `
                         <div class="desktop-stat-name">${statNames[stat.stat.name] || stat.stat.name}</div>
-                        <div class="desktop-stat-value">${stat.base_stat}</div>
+                        <div class="desktop-stat-value">${stat.base_stat}/255</div>
                         <div class="desktop-stat-bar">
                             <div class="desktop-stat-fill" style="width: ${percentage}%"></div>
                         </div>
                     `;
                     statsList.appendChild(statItem);
                 });
-
                 // Add total stats
                 const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
                 const totalItem = document.createElement('div');
                 totalItem.className = 'desktop-stat-item desktop-total-stats';
                 const totalPercentage = Math.min((totalStats / 720) * 100, 100);
-
                 totalItem.innerHTML = `
                     <div class="desktop-stat-name">TOTAL</div>
-                    <div class="desktop-stat-value">${totalStats}</div>
+                    <div class="desktop-stat-value">${totalStats}/720</div>
                     <div class="desktop-stat-bar">
                         <div class="desktop-stat-fill" style="width: ${totalPercentage}%"></div>
                     </div>
@@ -2235,9 +1879,7 @@
             displayMobileStats(pokemon) {
                 const statsList = document.getElementById('mobileStatsList');
                 if (!statsList) return;
-
                 statsList.innerHTML = '';
-
                 const statNames = {
                     'hp': 'HP',
                     'attack': 'ATK',
@@ -2246,31 +1888,27 @@
                     'special-defense': 'SP.DEF',
                     'speed': 'SPD'
                 };
-
                 pokemon.stats.forEach(stat => {
                     const statItem = document.createElement('div');
                     statItem.className = 'mobile-stat-item';
                     const percentage = Math.min((stat.base_stat / 255) * 100, 100);
-
                     statItem.innerHTML = `
                         <div class="mobile-stat-name">${statNames[stat.stat.name] || stat.stat.name}</div>
-                        <div class="mobile-stat-value">${stat.base_stat}</div>
+                        <div class="mobile-stat-value">${stat.base_stat}/255</div>
                         <div class="mobile-stat-bar">
                             <div class="mobile-stat-fill" style="width: ${percentage}%"></div>
                         </div>
                     `;
                     statsList.appendChild(statItem);
                 });
-
                 // Add total stats
                 const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
                 const totalItem = document.createElement('div');
                 totalItem.className = 'mobile-stat-item mobile-total-stats';
                 const totalPercentage = Math.min((totalStats / 720) * 100, 100);
-
                 totalItem.innerHTML = `
                     <div class="mobile-stat-name">TOTAL</div>
-                    <div class="mobile-stat-value">${totalStats}</div>
+                    <div class="mobile-stat-value">${totalStats}/720</div>
                     <div class="mobile-stat-bar">
                         <div class="mobile-stat-fill" style="width: ${totalPercentage}%"></div>
                     </div>
@@ -2281,10 +1919,8 @@
             displayMobileDetails(pokemon) {
                 const details = document.getElementById('mobilePokemonDetails');
                 if (!details) return;
-
                 const generation = this.getGeneration(pokemon.id);
                 const region = this.regionData[generation.number] || 'Unknown';
-
                 const detailsData = [
                     { label: 'Height', value: `${(pokemon.height / 10).toFixed(1)} m` },
                     { label: 'Weight', value: `${(pokemon.weight / 10).toFixed(1)} kg` },
@@ -2295,7 +1931,6 @@
                     { label: 'Abilities', value: pokemon.abilities.filter(a => !a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') || 'None' },
                     { label: 'Hidden', value: pokemon.abilities.filter(a => a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') || 'None' }
                 ];
-
                 details.innerHTML = '';
                 detailsData.forEach(detail => {
                     const detailItem = document.createElement('div');
@@ -2311,20 +1946,16 @@
             displayDesktopMoves(pokemon) {
                 const movesList = document.getElementById('movesList');
                 if (!movesList) return;
-
                 movesList.innerHTML = '';
-
                 if (pokemon.movesData && pokemon.movesData.length > 0) {
                     pokemon.movesData.forEach(move => {
                         const moveItem = document.createElement('div');
                         moveItem.className = 'move-item';
-
                         const power = move.power || 'N/A';
                         const accuracy = move.accuracy || 'N/A';
                         const pp = move.pp || 'N/A';
                         const type = move.type ? this.formatPokemonName(move.type.name) : 'Unknown';
                         const category = move.damage_class ? this.formatPokemonName(move.damage_class.name) : 'Unknown';
-
                         moveItem.innerHTML = `
                             <div class="move-header">
                                 <div class="move-name">${this.formatPokemonName(move.name)}</div>
@@ -2359,19 +1990,15 @@
             displayMobileMoves(pokemon) {
                 const movesList = document.getElementById('mobileMovesList');
                 if (!movesList) return;
-
                 movesList.innerHTML = '';
-
                 if (pokemon.movesData && pokemon.movesData.length > 0) {
                     pokemon.movesData.slice(0, 15).forEach(move => {
                         const moveItem = document.createElement('div');
                         moveItem.className = 'mobile-move-item';
-
                         const power = move.power || 'N/A';
                         const accuracy = move.accuracy || 'N/A';
                         const pp = move.pp || 'N/A';
                         const type = move.type ? this.formatPokemonName(move.type.name) : 'Unknown';
-
                         moveItem.innerHTML = `
                             <div class="mobile-move-header">
                                 <div class="mobile-move-name">${this.formatPokemonName(move.name)}</div>
@@ -2402,9 +2029,7 @@
             displayMobileTypeEffectiveness(pokemon) {
                 const container = document.getElementById('mobileTypeEffectiveness');
                 if (!container) return;
-
                 const effectiveness = this.calculateTypeEffectiveness(pokemon);
-
                 container.innerHTML = `
                     <div class="mobile-effectiveness-section">
                         <div class="mobile-effectiveness-title">🛡️ Weaknesses (2x)</div>
@@ -2423,12 +2048,10 @@
                         <div class="mobile-effectiveness-list" id="mobileStrengthsList"></div>
                     </div>
                 `;
-
                 const weaknessList = document.getElementById('mobileWeaknessList');
                 const resistancesList = document.getElementById('mobileResistancesList');
                 const immunitiesList = document.getElementById('mobileImmunitiesList');
                 const strengthsList = document.getElementById('mobileStrengthsList');
-
                 this.populateEffectivenessList(weaknessList, effectiveness.weaknesses, 'weakness', true);
                 this.populateEffectivenessList(resistancesList, effectiveness.resistances, 'resistance', true);
                 this.populateEffectivenessList(immunitiesList, effectiveness.immunities, 'immunity', true);
@@ -2438,9 +2061,7 @@
             displayArtworkGallery(pokemon) {
                 const gallery = document.getElementById('artworkGallery');
                 if (!gallery) return;
-
                 gallery.innerHTML = '';
-
                 const sprites = pokemon.sprites;
                 const artworkSources = [
                     { url: sprites.other['official-artwork'].front_default, label: 'Official Art' },
@@ -2455,18 +2076,15 @@
                     { url: sprites.other['showdown'].front_default, label: 'Showdown' },
                     { url: sprites.other['showdown'].front_shiny, label: 'Showdown Shiny' }
                 ];
-
                 artworkSources.forEach(source => {
                     if (source.url) {
                         const artworkItem = document.createElement('div');
                         artworkItem.className = 'artwork-item';
                         artworkItem.title = source.label;
-
                         const img = document.createElement('img');
                         img.src = source.url;
                         img.alt = source.label;
                         img.addEventListener('click', () => this.openArtworkModal(source.url, source.label));
-
                         artworkItem.appendChild(img);
                         gallery.appendChild(artworkItem);
                     }
@@ -2476,9 +2094,7 @@
             displayMobileArtworkGallery(pokemon) {
                 const gallery = document.getElementById('mobileArtworkGallery');
                 if (!gallery) return;
-
                 gallery.innerHTML = '';
-
                 const sprites = pokemon.sprites;
                 const artworkSources = [
                     { url: sprites.other['official-artwork'].front_default, label: 'Official Art' },
@@ -2491,18 +2107,15 @@
                     { url: sprites.front_shiny, label: 'Front Shiny' },
                     { url: sprites.back_shiny, label: 'Back Shiny' }
                 ];
-
                 artworkSources.forEach(source => {
                     if (source.url) {
                         const artworkItem = document.createElement('div');
                         artworkItem.className = 'mobile-artwork-item';
                         artworkItem.title = source.label;
-
                         const img = document.createElement('img');
                         img.src = source.url;
                         img.alt = source.label;
                         img.addEventListener('click', () => this.openArtworkModal(source.url, source.label));
-
                         artworkItem.appendChild(img);
                         gallery.appendChild(artworkItem);
                     }
@@ -2511,10 +2124,8 @@
 
             displayPokemonDetails(pokemon, container) {
                 if (!container) return;
-
                 const generation = this.getGeneration(pokemon.id);
                 const region = this.regionData[generation.number] || 'Unknown';
-
                 const details = [
                     { label: 'Height', value: `${(pokemon.height / 10).toFixed(1)} m` },
                     { label: 'Weight', value: `${(pokemon.weight / 10).toFixed(1)} kg` },
@@ -2529,7 +2140,6 @@
                     { label: 'Hatch Counter', value: pokemon.species.hatch_counter },
                     { label: 'Gender Rate', value: this.getGenderRatio(pokemon.species.gender_rate) }
                 ];
-
                 container.innerHTML = '';
                 details.forEach(detail => {
                     const detailItem = document.createElement('div');
@@ -2544,9 +2154,7 @@
 
             displayAdditionalInfo(pokemon, container) {
                 if (!container) return;
-
                 container.innerHTML = '';
-
                 // Evolution Chain
                 if (pokemon.evolutionChain) {
                     const evolutionSection = document.createElement('div');
@@ -2560,15 +2168,12 @@
                     container.appendChild(evolutionSection);
                     this.displayEvolutionChain(pokemon.evolutionChain);
                 }
-
                 // Locations
                 if (pokemon.locations && pokemon.locations.length > 0) {
                     const locationSection = document.createElement('div');
                     locationSection.className = 'info-section';
-                    const locationNames = pokemon.locations.map(loc =>
-                        this.formatPokemonName(loc.location_area.name)
-                    ).slice(0, 10); // Limit to first 10 locations
-
+                    const locationNames = pokemon.locations.map(loc => this.formatPokemonName(loc.location_area.name))
+                        .slice(0, 10); // Limit to first 10 locations
                     locationSection.innerHTML = `
                         <div class="info-title">Found In</div>
                         <div class="info-content-text">
@@ -2579,7 +2184,6 @@
                     `;
                     container.appendChild(locationSection);
                 }
-
                 // Habitat
                 if (pokemon.species.habitat) {
                     const habitatSection = document.createElement('div');
@@ -2590,7 +2194,6 @@
                     `;
                     container.appendChild(habitatSection);
                 }
-
                 // Color & Shape
                 const physicalSection = document.createElement('div');
                 physicalSection.className = 'info-section';
@@ -2602,7 +2205,6 @@
                     </div>
                 `;
                 container.appendChild(physicalSection);
-
                 // Status
                 const statusSection = document.createElement('div');
                 statusSection.className = 'info-section';
@@ -2618,35 +2220,28 @@
             displayEvolutionChain(evolutionChain) {
                 const container = document.getElementById('evolutionChain');
                 if (!container) return;
-
                 container.innerHTML = '';
-
                 const processEvolution = (evolution) => {
                     const evolutionItem = document.createElement('div');
                     evolutionItem.className = 'evolution-item';
                     evolutionItem.onclick = () => this.loadPokemon(evolution.species.name);
-
                     const pokemonId = evolution.species.url.split('/').slice(-2, -1)[0];
                     const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
-
                     evolutionItem.innerHTML = `
                         <img src="${imageUrl}" alt="${evolution.species.name}" class="evolution-image">
                         <div class="evolution-name">${this.formatPokemonName(evolution.species.name)}</div>
                     `;
                     container.appendChild(evolutionItem);
-
                     if (evolution.evolves_to.length > 0) {
                         const arrow = document.createElement('div');
                         arrow.className = 'evolution-arrow';
                         arrow.textContent = '';
                         container.appendChild(arrow);
-
                         evolution.evolves_to.forEach(nextEvolution => {
                             processEvolution(nextEvolution);
                         });
                     }
                 };
-
                 processEvolution(evolutionChain.chain);
             }
 
@@ -2656,7 +2251,6 @@
                     const response = await fetch('https://pokeapi.co/api/v2/type');
                     const typeList = await response.json();
                     this.typeChart = {};
-
                     const typePromises = typeList.results.map(async (type) => {
                         const typeResponse = await fetch(type.url);
                         const typeData = await typeResponse.json();
@@ -2669,7 +2263,6 @@
                             no_damage_from: typeData.damage_relations.no_damage_from.map(t => t.name)
                         };
                     });
-
                     await Promise.all(typePromises);
                 } catch (error) {
                     console.error('Error loading type chart:', error);
@@ -2678,14 +2271,11 @@
 
             calculateTypeEffectiveness(pokemon) {
                 if (!this.typeChart) return { weaknesses: [], resistances: [], immunities: [], strengths: [] };
-
                 const pokemonTypes = pokemon.types.map(t => t.type.name);
-
                 // Defensive calculations
                 const weaknesses = [];
                 const resistances = [];
                 const immunities = [];
-
                 this.types.forEach(attackingType => {
                     let multiplier = 1;
                     pokemonTypes.forEach(defendingType => {
@@ -2697,7 +2287,6 @@
                             multiplier *= 0.5;
                         }
                     });
-
                     if (multiplier === 0) {
                         immunities.push(attackingType);
                     } else if (multiplier >= 2) {
@@ -2706,7 +2295,6 @@
                         resistances.push(attackingType);
                     }
                 });
-
                 // Offensive strengths
                 const strengths = new Set();
                 pokemonTypes.forEach(attackingType => {
@@ -2714,13 +2302,7 @@
                         strengths.add(strongType);
                     });
                 });
-
-                return {
-                    weaknesses,
-                    resistances,
-                    immunities,
-                    strengths: Array.from(strengths)
-                };
+                return { weaknesses, resistances, immunities, strengths: Array.from(strengths) };
             }
 
             displayTypeEffectiveness(pokemon) {
@@ -2729,9 +2311,7 @@
                 const resistancesList = document.getElementById('resistancesList');
                 const immunitiesList = document.getElementById('immunitiesList');
                 const strengthsList = document.getElementById('strengthsList');
-
                 if (!weaknessList || !resistancesList || !immunitiesList || !strengthsList) return;
-
                 this.populateEffectivenessList(weaknessList, effectiveness.weaknesses, 'weakness');
                 this.populateEffectivenessList(resistancesList, effectiveness.resistances, 'resistance');
                 this.populateEffectivenessList(immunitiesList, effectiveness.immunities, 'immunity');
@@ -2740,7 +2320,6 @@
 
             populateEffectivenessList(container, types, className, isMobile = false) {
                 container.innerHTML = '';
-
                 if (types.length === 0) {
                     const itemClass = isMobile ? `mobile-effectiveness-item ${className}` : `effectiveness-item ${className}`;
                     container.innerHTML = `<div class="${itemClass}">None</div>`;
@@ -2749,14 +2328,11 @@
                         const item = document.createElement('div');
                         const itemClass = isMobile ? `mobile-effectiveness-item ${className}` : `effectiveness-item ${className}`;
                         item.className = itemClass;
-
                         const typeIcon = this.createTypeIcon(type);
                         item.appendChild(typeIcon);
-
                         const typeText = document.createElement('span');
                         typeText.textContent = type;
                         item.appendChild(typeText);
-
                         container.appendChild(item);
                     });
                 }
@@ -2764,10 +2340,8 @@
 
             async playPokemonCry(type = 'legacy') {
                 if (!this.currentPokemon) return;
-
                 const pokemonId = this.currentPokemon.id;
                 const cacheKey = `${pokemonId}_${type}`;
-
                 try {
                     let audioUrl;
                     if (type === 'latest') {
@@ -2775,12 +2349,10 @@
                     } else {
                         audioUrl = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/${pokemonId}.ogg`;
                     }
-
                     if (!this.audioCache.has(cacheKey)) {
                         const audio = new Audio(audioUrl);
                         this.audioCache.set(cacheKey, audio);
                     }
-
                     const audio = this.audioCache.get(cacheKey);
                     audio.currentTime = 0;
                     await audio.play();
@@ -2793,7 +2365,6 @@
             openArtworkModal(imageUrl, label) {
                 const modal = document.getElementById('artworkModal');
                 const modalImage = document.getElementById('modalImage');
-
                 if (modal && modalImage) {
                     modalImage.src = imageUrl;
                     modalImage.alt = label;
@@ -2841,7 +2412,6 @@
             showLoading(show) {
                 const loadingDiv = document.getElementById('loadingDiv');
                 const mobileLoadingDiv = document.getElementById('mobileLoadingDiv');
-
                 if (this.isMobile && mobileLoadingDiv) {
                     mobileLoadingDiv.style.display = show ? 'block' : 'none';
                 } else if (loadingDiv) {
@@ -2850,10 +2420,7 @@
             }
 
             showError(message, isMobile = false) {
-                const errorDiv = isMobile ?
-                    document.getElementById('mobileErrorDiv') :
-                    document.getElementById('errorDiv');
-
+                const errorDiv = isMobile ? document.getElementById('mobileErrorDiv') : document.getElementById('errorDiv');
                 if (errorDiv) {
                     errorDiv.textContent = message;
                     errorDiv.style.display = 'block';
@@ -2866,7 +2433,6 @@
             hideError() {
                 const errorDiv = document.getElementById('errorDiv');
                 const mobileErrorDiv = document.getElementById('mobileErrorDiv');
-
                 if (errorDiv) errorDiv.style.display = 'none';
                 if (mobileErrorDiv) mobileErrorDiv.style.display = 'none';
             }
@@ -2878,5 +2444,4 @@
         });
     </script>
 </body>
-
 </html>
