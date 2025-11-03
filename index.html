@@ -1806,8 +1806,6 @@
                         placeholder="Enter Pokemon name or ID (e.g., pikachu, 25)">
                     <button class="search-btn" id="searchBtn">Search</button>
                     <button class="random-btn" id="randomBtn">Random Pokemon</button>
-                    <select id="formSelector" class="form-selector" style="display: none;">
-                    </select>
                 </div>
             </section>
             <div id="loadingDiv" class="loading" style="display: none;">
@@ -1825,6 +1823,8 @@
                             <button id="playCry" class="sound-btn">🔊 Play Cry</button>
                             <button id="playLatestCry" class="sound-btn">🎵 Latest Cry</button>
                         </div>
+                        <select id="formSelector" class="form-selector" style="display: none;">
+                        </select>
                         <div class="artwork-gallery" id="artworkGallery"></div>
                     </div>
                     <div class="pokemon-right-panel">
@@ -1885,8 +1885,6 @@
             <div class="mobile-search">
                 <input type="text" class="mobile-search-input" id="mobileSearchInput"
                     placeholder="Pokemon name or ID...">
-                <select id="mobileFormSelector" class="mobile-form-selector" style="display: none;">
-                </select>
                 <div class="mobile-search-buttons">
                     <button class="mobile-btn mobile-search-btn" id="mobileSearchBtn">Search</button>
                     <button class="mobile-btn mobile-random-btn" id="mobileRandomBtn">Random</button>
@@ -1904,6 +1902,8 @@
                         <h2 id="mobilePokemonTitle" class="mobile-pokemon-title"></h2>
                         <p id="mobilePokemonId" class="mobile-pokemon-id"></p>
                         <div id="mobilePokemonTypes" class="mobile-pokemon-types"></div>
+                        <select id="mobileFormSelector" class="mobile-form-selector" style="display: none; margin-top: 16px;">
+                        </select>
                     </div>
                     <div class="mobile-controls">
                         <button id="mobileShinyToggle" class="mobile-control-btn">✨ Shiny</button>
@@ -2149,7 +2149,7 @@
                     const pokemon = await response.json();
                     const speciesResponse = await fetch(pokemon.species.url);
                     const species = await speciesResponse.json();
-                    this.loadPokemonForms(species.id, species);
+                    this.loadPokemonForms(species);
                     let evolutionChain = null;
                     if (species.evolution_chain) {
                         const evolutionResponse = await fetch(species.evolution_chain.url);
@@ -2226,30 +2226,26 @@
                 }
             }
 
-            async loadPokemonForms(pokemonId, species) {
-                try {
-                    const formSelector = document.getElementById('formSelector');
-                    const mobileFormSelector = document.getElementById('mobileFormSelector');
-                    const populateSelect = (selector) => {
-                        if (!selector) return;
-                        selector.innerHTML = '<option value="">Select Form</option>';
-                        if (species.varieties && species.varieties.length > 1) {
-                            species.varieties.forEach(variety => {
-                                const option = document.createElement('option');
-                                option.value = variety.pokemon.url;
-                                option.textContent = this.formatPokemonName(variety.pokemon.name);
-                                selector.appendChild(option);
-                            });
-                            selector.style.display = 'block';
-                        } else {
-                            selector.style.display = 'none';
-                        }
-                    };
-                    populateSelect(formSelector);
-                    populateSelect(mobileFormSelector);
-                } catch (error) {
-                    console.error('Error loading forms:', error);
-                }
+            loadPokemonForms(species) {
+                const formSelector = document.getElementById('formSelector');
+                const mobileFormSelector = document.getElementById('mobileFormSelector');
+                const populate = (selector) => {
+                    if (!selector) return;
+                    selector.innerHTML = '<option value="">Select Form</option>';
+                    if (species.varieties && species.varieties.length > 1) {
+                        species.varieties.forEach(variety => {
+                            const option = document.createElement('option');
+                            option.value = variety.pokemon.url;
+                            option.textContent = this.formatPokemonName(variety.pokemon.name);
+                            selector.appendChild(option);
+                        });
+                        selector.style.display = 'block';
+                    } else {
+                        selector.style.display = 'none';
+                    }
+                };
+                populate(formSelector);
+                populate(mobileFormSelector);
             }
 
             createTypeIcon(typeName) {
@@ -2266,6 +2262,10 @@
                 } else {
                     this.displayDesktopPokemon(pokemon);
                 }
+            }
+
+            toTitleCase(text) {
+                return text.replace(/\b[A-Z]+\b/g, word => word.charAt(0) + word.slice(1).toLowerCase());
             }
 
             displayDesktopPokemon(pokemon) {
@@ -2299,9 +2299,11 @@
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
                 );
-                description.textContent = englishEntry
+                let flavorText = englishEntry
                     ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
                     : 'No description available.';
+                flavorText = this.toTitleCase(flavorText);
+                description.textContent = flavorText;
                 this.displayArtworkGallery(pokemon);
                 this.displayPokemonDetails(pokemon, details);
                 this.displayAbilities(pokemon);
@@ -2341,9 +2343,11 @@
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
                 );
-                description.textContent = englishEntry
-                    ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
+                let flavorText = englishEntry
+                    ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ').replace('','')
                     : 'No description available.';
+                flavorText = this.toTitleCase(flavorText);
+                description.textContent = flavorText;
                 this.displayMobileArtworkGallery(pokemon);
                 this.displayMobileAbilities(pokemon);
                 this.displayMobileStats(pokemon);
@@ -2361,7 +2365,7 @@
                 const section = document.getElementById('abilitiesSection');
                 if (!section) return;
                 section.innerHTML = `
-                    <div class="abilities-title">💫 Abilities</div>
+                    <div class="abilities-title">Abilities</div>
                 `;
                 if (pokemon.abilitiesData && pokemon.abilitiesData.length > 0) {
                     pokemon.abilitiesData.forEach(ability => {
