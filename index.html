@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="shortcut icon" href="https://www.pokemon.com/favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --primary-bg: #ffffff;
             --secondary-bg: #f8fafc;
@@ -30,6 +33,7 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             font-weight: 300;
@@ -40,27 +44,33 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--secondary-bg);
             border-radius: 5px;
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--accent-color);
             border-radius: 5px;
             transition: background 0.3s ease;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-hover);
         }
+
         /* Firefox scrollbar */
         * {
             scrollbar-width: thin;
             scrollbar-color: var(--accent-color) var(--secondary-bg);
         }
+
         /* Desktop Layout */
         .desktop-layout {
             display: flex;
@@ -69,6 +79,7 @@
             padding: 20px;
             min-height: 100vh;
         }
+
         .container {
             width: 100%;
             max-width: 1200px;
@@ -78,6 +89,7 @@
             align-items: center;
             gap: 20px;
         }
+
         .header {
             text-align: center;
             padding: 30px;
@@ -87,6 +99,7 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
+
         .header h1 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -94,16 +107,19 @@
             margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
         }
+
         .header p {
             color: var(--text-primary);
             font-size: 1.1rem;
             opacity: 0.8;
         }
+
         .search-section {
             width: 100%;
             display: flex;
             justify-content: center;
         }
+
         .search-container {
             display: flex;
             gap: 12px;
@@ -111,6 +127,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .search-input {
             flex: 1;
             min-width: 250px;
@@ -129,21 +146,26 @@
             transition: all 200ms ease;
             box-shadow: var(--shadow);
         }
+
         .search-input:focus {
             outline: none;
             box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
             transform: translateY(-1px);
         }
+
         .search-input::placeholder {
             color: var(--text-muted);
             opacity: 0.7;
             transition: all 200ms ease;
         }
+
         .search-input:focus::placeholder {
             opacity: 0;
         }
-        .search-btn, .random-btn {
+
+        .search-btn,
+        .random-btn {
             border-radius: 12px;
             height: 50px;
             font-size: 14px;
@@ -163,17 +185,22 @@
             cursor: pointer;
             white-space: nowrap;
         }
-        .search-btn:hover, .random-btn:hover {
+
+        .search-btn:hover,
+        .random-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
         }
+
         .random-btn {
             background: var(--success-color);
         }
+
         .random-btn:hover {
             background: #059669;
         }
+
         .loading {
             text-align: center;
             padding: 40px;
@@ -183,6 +210,7 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
+
         .spinner {
             position: relative;
             display: inline-block;
@@ -194,10 +222,17 @@
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .pokemon-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -207,6 +242,7 @@
             width: 100%;
             border: 1px solid var(--border-color);
         }
+
         .pokemon-main-content {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -214,6 +250,7 @@
             margin-bottom: 25px;
             align-items: start;
         }
+
         .pokemon-left-panel {
             display: flex;
             flex-direction: column;
@@ -221,6 +258,7 @@
             gap: 20px;
             width: 350px;
         }
+
         .pokemon-image-container {
             position: relative;
             width: 300px;
@@ -234,6 +272,7 @@
             justify-content: center;
             border: 2px solid var(--border-color);
         }
+
         .pokemon-image {
             width: 90%;
             height: 90%;
@@ -241,15 +280,18 @@
             transition: transform 0.3s ease;
             cursor: pointer;
         }
+
         .pokemon-image:hover {
             transform: scale(1.05);
         }
+
         .sound-controls {
             display: flex;
             gap: 12px;
             align-items: center;
             margin: 15px 0;
         }
+
         .sound-btn {
             background: var(--accent-color);
             color: white;
@@ -262,11 +304,13 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
+
         .sound-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
         .artwork-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
@@ -275,6 +319,7 @@
             width: 100%;
             max-width: 340px;
         }
+
         .artwork-item {
             width: 85px;
             height: 85px;
@@ -285,28 +330,33 @@
             border: 2px solid var(--border-color);
             box-shadow: var(--shadow);
         }
+
         .artwork-item:hover {
             transform: scale(1.1);
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
+
         .artwork-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: var(--secondary-bg);
         }
+
         .pokemon-right-panel {
             display: flex;
             flex-direction: column;
             gap: 20px;
             min-width: 400px;
         }
+
         .pokemon-header {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
+
         .pokemon-title {
             font-size: 3rem;
             font-weight: 700;
@@ -314,18 +364,21 @@
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
             margin: 0;
         }
+
         .pokemon-id {
             color: var(--text-muted);
             font-size: 1.3rem;
             font-weight: 600;
             margin: 0;
         }
+
         .pokemon-types {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
             margin: 15px 0;
         }
+
         .type-badge {
             padding: 10px 18px;
             border-radius: 30px;
@@ -339,6 +392,7 @@
             gap: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .type-icon {
             width: 18px;
             height: 18px;
@@ -346,6 +400,7 @@
             display: inline-block;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
         .pokemon-description {
             color: var(--text-primary);
             font-size: 1.15rem;
@@ -356,11 +411,13 @@
             border-left: 4px solid var(--accent-color);
             box-shadow: var(--shadow);
         }
+
         .pokemon-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
+
         .detail-item {
             background: var(--secondary-bg);
             padding: 15px;
@@ -369,10 +426,12 @@
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
+
         .detail-item:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
         .detail-label {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -381,11 +440,13 @@
             letter-spacing: 0.5px;
             font-weight: 600;
         }
+
         .detail-value {
             color: var(--text-primary);
             font-size: 1.15rem;
             font-weight: 600;
         }
+
         .controls {
             display: flex;
             gap: 15px;
@@ -393,6 +454,7 @@
             justify-content: center;
             margin: 25px 0;
         }
+
         .control-btn {
             border-radius: 12px;
             height: 45px;
@@ -412,15 +474,18 @@
             box-shadow: var(--shadow-lg);
             cursor: pointer;
         }
+
         .control-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
         }
+
         .control-btn.active {
             background: var(--accent-hover);
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
         }
+
         .form-selector {
             height: 45px;
             padding: 0 18px;
@@ -434,11 +499,13 @@
             font-size: 14px;
             font-weight: 500;
         }
+
         .form-selector:focus {
             outline: none;
             box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
         }
+
         /* Unified Container for Stats, Type Effectiveness, and Moves */
         .unified-info-container {
             background: var(--secondary-bg);
@@ -449,6 +516,7 @@
             margin-top: 25px;
             width: 100%;
         }
+
         .info-navigation {
             display: flex;
             background: var(--card-bg);
@@ -458,6 +526,7 @@
             box-shadow: var(--shadow);
             gap: 5px;
         }
+
         .nav-tab {
             flex: 1;
             padding: 15px 20px;
@@ -476,33 +545,47 @@
             justify-content: center;
             gap: 8px;
         }
+
         .nav-tab.active {
             background: var(--accent-color);
             color: white;
             box-shadow: var(--shadow);
             transform: translateY(-1px);
         }
+
         .nav-tab:hover:not(.active) {
             background: var(--accent-bg);
             color: var(--accent-color);
         }
+
         .info-content {
             display: none;
             animation: fadeIn 0.3s ease-in-out;
         }
+
         .info-content.active {
             display: block;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         /* Updated Desktop Stats to match Mobile Style */
         .desktop-stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
+
         .desktop-stat-item {
             background: var(--card-bg);
             padding: 15px;
@@ -512,10 +595,12 @@
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
+
         .desktop-stat-item:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
         .desktop-stat-name {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -524,12 +609,14 @@
             margin-bottom: 8px;
             letter-spacing: 0.5px;
         }
+
         .desktop-stat-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 8px;
         }
+
         .desktop-stat-bar {
             width: 100%;
             height: 8px;
@@ -538,32 +625,40 @@
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .desktop-stat-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
             border-radius: 4px;
         }
+
         .desktop-total-stats {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             color: white;
             border: none;
         }
-        .desktop-total-stats .desktop-stat-name, .desktop-total-stats .desktop-stat-value {
+
+        .desktop-total-stats .desktop-stat-name,
+        .desktop-total-stats .desktop-stat-value {
             color: white;
         }
+
         .desktop-total-stats .desktop-stat-bar {
             background: rgba(255, 255, 255, 0.2);
         }
+
         .desktop-total-stats .desktop-stat-fill {
             background: rgba(255, 255, 255, 0.8);
         }
+
         .type-effectiveness {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
+
         .effectiveness-section {
             background: var(--card-bg);
             border-radius: 12px;
@@ -571,6 +666,7 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
+
         .effectiveness-title {
             font-size: 1.2rem;
             font-weight: 700;
@@ -580,11 +676,13 @@
             align-items: center;
             gap: 8px;
         }
+
         .effectiveness-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .effectiveness-item {
             padding: 8px 15px;
             border-radius: 20px;
@@ -597,30 +695,36 @@
             transition: all 0.2s ease;
             box-shadow: var(--shadow);
         }
+
         .effectiveness-item:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
+
         .weakness {
             background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
+
         .strength {
             background: rgba(16, 185, 129, 0.1);
             color: #059669;
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
+
         .resistance {
             background: rgba(59, 130, 246, 0.1);
             color: #2563eb;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
+
         .immunity {
             background: rgba(107, 114, 128, 0.1);
             color: #374151;
             border: 1px solid rgba(107, 114, 128, 0.2);
         }
+
         /* Official Pokémon-style Moves List */
         .moves-list {
             max-height: 500px;
@@ -629,16 +733,19 @@
             flex-direction: column;
             gap: 2px;
         }
+
         .move-item {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
             cursor: pointer;
         }
+
         .move-item:hover {
             background: var(--accent-bg);
             border-color: var(--accent-color);
         }
+
         .move-header {
             display: grid;
             grid-template-columns: auto 2fr auto auto auto auto;
@@ -646,11 +753,13 @@
             padding: 12px 16px;
             gap: 12px;
         }
+
         .move-name {
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .move-level {
             font-size: 0.9rem;
             font-weight: 600;
@@ -658,6 +767,7 @@
             text-align: center;
             min-width: 50px;
         }
+
         .move-type-badge {
             padding: 4px 12px;
             border-radius: 4px;
@@ -671,6 +781,7 @@
             min-width: 80px;
             justify-content: center;
         }
+
         .move-category {
             display: flex;
             align-items: center;
@@ -679,13 +790,16 @@
             font-weight: 600;
             color: var(--text-muted);
         }
-        .move-power, .move-accuracy {
+
+        .move-power,
+        .move-accuracy {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
             text-align: center;
             min-width: 50px;
         }
+
         .move-details {
             display: none;
             padding: 0 16px 16px 16px;
@@ -693,19 +807,23 @@
             margin-top: 8px;
             animation: slideDown 0.2s ease;
         }
+
         .move-item.expanded .move-details {
             display: block;
         }
+
         @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .move-description {
             margin-top: 12px;
             padding: 12px;
@@ -715,18 +833,21 @@
             font-size: 0.9rem;
             line-height: 1.5;
         }
+
         .move-stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
             margin-top: 12px;
         }
+
         .move-stat-box {
             background: var(--secondary-bg);
             padding: 8px 12px;
             border-radius: 6px;
             text-align: center;
         }
+
         .move-stat-label {
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -734,11 +855,13 @@
             font-weight: 600;
             margin-bottom: 4px;
         }
+
         .move-stat-value {
             font-size: 1rem;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         /* Ability Info Section */
         .abilities-section {
             background: var(--card-bg);
@@ -748,6 +871,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .abilities-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -757,6 +881,7 @@
             align-items: center;
             gap: 8px;
         }
+
         .ability-item {
             background: var(--secondary-bg);
             padding: 15px;
@@ -764,20 +889,24 @@
             margin-bottom: 12px;
             border-left: 4px solid var(--accent-color);
         }
+
         .ability-item.hidden {
             border-left-color: var(--warning-color);
         }
+
         .ability-header {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 8px;
         }
+
         .ability-name {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .ability-badge {
             padding: 4px 10px;
             border-radius: 12px;
@@ -787,17 +916,20 @@
             background: var(--warning-color);
             color: white;
         }
+
         .ability-description {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
+
         .additional-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 25px;
         }
+
         .info-section {
             background: var(--secondary-bg);
             border-radius: 12px;
@@ -806,17 +938,20 @@
             box-shadow: var(--shadow);
             width: 100%;
         }
+
         .info-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 12px;
         }
+
         .info-content-text {
             color: var(--text-primary);
             font-size: 1rem;
             line-height: 1.5;
         }
+
         .evolution-chain {
             display: flex;
             align-items: center;
@@ -824,6 +959,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .evolution-item {
             display: flex;
             flex-direction: column;
@@ -837,29 +973,35 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .evolution-item:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
+
         .evolution-image {
             width: 65px;
             height: 65px;
             object-fit: contain;
         }
+
         .evolution-name {
             font-size: 0.85rem;
             font-weight: 600;
             text-align: center;
         }
+
         .evolution-arrow {
             font-size: 1.8rem;
             color: var(--accent-color);
         }
+
         .location-info {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .location-item {
             background: var(--accent-color);
             color: white;
@@ -869,6 +1011,7 @@
             font-weight: 500;
             box-shadow: var(--shadow);
         }
+
         .error-message {
             background: rgba(239, 68, 68, 0.1);
             border: 2px solid rgba(239, 68, 68, 0.2);
@@ -880,6 +1023,7 @@
             box-shadow: var(--shadow-lg);
             width: 100%;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -891,11 +1035,13 @@
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
+
         .modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .modal-content {
             background: var(--card-bg);
             border-radius: 16px;
@@ -907,10 +1053,12 @@
             border: 1px solid var(--border-color);
             width: fit-content;
         }
+
         .modal img {
             max-width: 100%;
             height: auto;
         }
+
         .close-btn {
             background: var(--error-color);
             color: white;
@@ -922,16 +1070,19 @@
             margin-bottom: 15px;
             box-shadow: var(--shadow);
         }
+
         /* Mobile Layout - Enhanced for Feature Parity */
         .mobile-layout {
             display: none;
             padding: 10px;
             background: var(--primary-bg);
         }
+
         .mobile-container {
             width: 100%;
             margin: 0 auto;
         }
+
         .mobile-header {
             background: var(--card-bg);
             border-radius: 20px;
@@ -941,16 +1092,19 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
+
         .mobile-header h1 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 5px;
         }
+
         .mobile-header p {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
+
         .mobile-search {
             background: var(--card-bg);
             border-radius: 20px;
@@ -959,6 +1113,7 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
+
         .mobile-search-input {
             width: 100%;
             padding: 15px;
@@ -969,15 +1124,18 @@
             background: var(--secondary-bg);
             box-shadow: var(--shadow);
         }
+
         .mobile-search-input:focus {
             outline: none;
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
+
         .mobile-search-buttons {
             display: flex;
             gap: 10px;
         }
+
         .mobile-btn {
             flex: 1;
             padding: 12px;
@@ -989,18 +1147,22 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
+
         .mobile-search-btn {
             background: var(--accent-color);
             color: white;
         }
+
         .mobile-random-btn {
             background: var(--success-color);
             color: white;
         }
+
         .mobile-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
         .mobile-loading {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1009,6 +1171,7 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
+
         .mobile-pokemon-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -1017,6 +1180,7 @@
             overflow: hidden;
             width: 100%;
         }
+
         .mobile-pokemon-hero {
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             padding: 25px;
@@ -1024,6 +1188,7 @@
             color: white;
             position: relative;
         }
+
         .mobile-pokemon-image {
             width: 200px;
             height: 200px;
@@ -1036,26 +1201,31 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
+
         .mobile-pokemon-image:hover {
             transform: scale(1.05);
         }
+
         .mobile-pokemon-title {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
+
         .mobile-pokemon-id {
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 15px;
         }
+
         .mobile-pokemon-types {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
         }
+
         .mobile-type-badge {
             padding: 8px 16px;
             border-radius: 25px;
@@ -1070,6 +1240,7 @@
             align-items: center;
             gap: 6px;
         }
+
         .mobile-controls {
             padding: 20px;
             background: var(--secondary-bg);
@@ -1078,6 +1249,7 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .mobile-control-btn {
             padding: 10px 16px;
             border: none;
@@ -1090,13 +1262,16 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
+
         .mobile-control-btn:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
+
         .mobile-content {
             padding: 20px;
         }
+
         .mobile-description {
             background: var(--secondary-bg);
             padding: 15px;
@@ -1107,6 +1282,7 @@
             box-shadow: var(--shadow);
             border-left: 4px solid var(--accent-color);
         }
+
         .mobile-tabs {
             display: flex;
             background: var(--secondary-bg);
@@ -1115,6 +1291,7 @@
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
+
         .mobile-tab {
             flex: 1;
             padding: 12px 8px;
@@ -1127,11 +1304,13 @@
             transition: all 0.3s ease;
             color: var(--text-muted);
         }
+
         .mobile-tab.active {
             background: var(--accent-color);
             color: white;
             box-shadow: var(--shadow);
         }
+
         .mobile-tab-content {
             display: none;
             background: var(--secondary-bg);
@@ -1139,14 +1318,17 @@
             padding: 20px;
             box-shadow: var(--shadow);
         }
+
         .mobile-tab-content.active {
             display: block;
         }
+
         .mobile-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
+
         .mobile-stat-item {
             background: var(--card-bg);
             padding: 15px;
@@ -1155,6 +1337,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .mobile-stat-name {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -1162,11 +1345,13 @@
             font-weight: 600;
             margin-bottom: 5px;
         }
+
         .mobile-stat-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-secondary);
         }
+
         .mobile-stat-bar {
             width: 100%;
             height: 6px;
@@ -1175,31 +1360,39 @@
             margin-top: 8px;
             overflow: hidden;
         }
+
         .mobile-stat-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
         }
+
         .mobile-total-stats {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             color: white;
             border: none;
         }
-        .mobile-total-stats .mobile-stat-name, .mobile-total-stats .mobile-stat-value {
+
+        .mobile-total-stats .mobile-stat-name,
+        .mobile-total-stats .mobile-stat-value {
             color: white;
         }
+
         .mobile-total-stats .mobile-stat-bar {
             background: rgba(255, 255, 255, 0.2);
         }
+
         .mobile-total-stats .mobile-stat-fill {
             background: rgba(255, 255, 255, 0.8);
         }
+
         .mobile-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
+
         .mobile-detail-item {
             background: var(--card-bg);
             padding: 12px;
@@ -1207,6 +1400,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .mobile-detail-label {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -1214,11 +1408,13 @@
             font-weight: 600;
             margin-bottom: 4px;
         }
+
         .mobile-detail-value {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .mobile-moves-list {
             max-height: 400px;
             overflow-y: auto;
@@ -1226,14 +1422,17 @@
             flex-direction: column;
             gap: 2px;
         }
+
         .mobile-move-item {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
         }
+
         .mobile-move-item:hover {
             background: var(--accent-bg);
         }
+
         .mobile-move-header {
             display: grid;
             grid-template-columns: auto 1fr auto;
@@ -1241,17 +1440,20 @@
             padding: 10px 12px;
             gap: 8px;
         }
+
         .mobile-move-name {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .mobile-move-level {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-align: center;
         }
+
         .mobile-move-type-badge {
             padding: 3px 8px;
             border-radius: 4px;
@@ -1262,20 +1464,24 @@
             align-items: center;
             gap: 4px;
         }
+
         .mobile-move-details {
             display: none;
             padding: 0 12px 12px 12px;
             border-top: 1px solid var(--border-color);
         }
+
         .mobile-move-item.expanded .mobile-move-details {
             display: block;
         }
+
         .mobile-move-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 8px;
             margin-top: 8px;
         }
+
         .mobile-move-stat {
             text-align: center;
             padding: 6px 4px;
@@ -1283,6 +1489,7 @@
             border-radius: 6px;
             border: 1px solid var(--border-color);
         }
+
         .mobile-move-stat-label {
             font-size: 0.65rem;
             color: var(--text-muted);
@@ -1290,11 +1497,13 @@
             font-weight: 600;
             margin-bottom: 2px;
         }
+
         .mobile-move-stat-value {
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .mobile-move-description {
             margin-top: 10px;
             padding: 10px;
@@ -1304,11 +1513,13 @@
             font-size: 0.8rem;
             line-height: 1.4;
         }
+
         .mobile-effectiveness-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
         }
+
         .mobile-effectiveness-section {
             background: var(--card-bg);
             padding: 15px;
@@ -1316,17 +1527,20 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .mobile-effectiveness-title {
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--text-secondary);
         }
+
         .mobile-effectiveness-list {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
+
         .mobile-effectiveness-item {
             padding: 6px 12px;
             border-radius: 15px;
@@ -1337,6 +1551,7 @@
             align-items: center;
             gap: 6px;
         }
+
         /* Enhanced Artwork Gallery for Mobile */
         .mobile-artwork-section {
             background: var(--secondary-bg);
@@ -1345,6 +1560,7 @@
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
+
         .mobile-artwork-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -1352,6 +1568,7 @@
             margin-bottom: 15px;
             text-align: center;
         }
+
         .mobile-artwork-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
@@ -1359,6 +1576,7 @@
             max-height: 200px;
             overflow-y: auto;
         }
+
         .mobile-artwork-item {
             width: 70px;
             height: 70px;
@@ -1369,17 +1587,20 @@
             border: 2px solid var(--border-color);
             box-shadow: var(--shadow);
         }
+
         .mobile-artwork-item:hover {
             transform: scale(1.1);
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
+
         .mobile-artwork-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: var(--card-bg);
         }
+
         .mobile-abilities-section {
             background: var(--card-bg);
             border-radius: 12px;
@@ -1388,12 +1609,14 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
+
         .mobile-abilities-title {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 12px;
         }
+
         .mobile-ability-item {
             background: var(--secondary-bg);
             padding: 12px;
@@ -1401,20 +1624,24 @@
             margin-bottom: 10px;
             border-left: 3px solid var(--accent-color);
         }
+
         .mobile-ability-item.hidden {
             border-left-color: var(--warning-color);
         }
+
         .mobile-ability-header {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 6px;
         }
+
         .mobile-ability-name {
             font-size: 1rem;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .mobile-ability-badge {
             padding: 3px 8px;
             border-radius: 10px;
@@ -1424,55 +1651,143 @@
             background: var(--warning-color);
             color: white;
         }
+
         .mobile-ability-description {
             color: var(--text-muted);
             font-size: 0.85rem;
             line-height: 1.5;
         }
+
         /* Media Queries */
         @media (max-width: 768px) {
-            .desktop-layout { display: none; }
-            .mobile-layout { display: block; }
+            .desktop-layout {
+                display: none;
+            }
+
+            .mobile-layout {
+                display: block;
+            }
         }
+
         @media (min-width: 769px) {
-            .desktop-layout { display: flex; }
-            .mobile-layout { display: none; }
+            .desktop-layout {
+                display: flex;
+            }
+
+            .mobile-layout {
+                display: none;
+            }
         }
+
         /* Desktop responsive adjustments */
         @media (max-width: 1200px) and (min-width: 769px) {
             .pokemon-main-content {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+
             .pokemon-left-panel {
                 width: 100%;
             }
+
             .pokemon-right-panel {
                 min-width: auto;
             }
         }
 
         /* Type colors */
-        .type-normal { background: #A8A878; color: #000; }
-        .type-fire { background: #F08030; color: #fff; }
-        .type-water { background: #6890F0; color: #fff; }
-        .type-electric { background: #F8D030; color: #000; }
-        .type-grass { background: #78C850; color: #000; }
-        .type-ice { background: #98D8D8; color: #000; }
-        .type-fighting { background: #C03028; color: #fff; }
-        .type-poison { background: #A040A0; color: #fff; }
-        .type-ground { background: #E0C068; color: #000; }
-        .type-flying { background: #A890F0; color: #000; }
-        .type-psychic { background: #F85888; color: #fff; }
-        .type-bug { background: #A8B820; color: #000; }
-        .type-rock { background: #B8A038; color: #000; }
-        .type-ghost { background: #705898; color: #fff; }
-        .type-dragon { background: #7038F8; color: #fff; }
-        .type-dark { background: #705848; color: #fff; }
-        .type-steel { background: #B8B8D0; color: #000; }
-        .type-fairy { background: #EE99AC; color: #000; }
+        .type-normal {
+            background: #A8A878;
+            color: #000;
+        }
+
+        .type-fire {
+            background: #F08030;
+            color: #fff;
+        }
+
+        .type-water {
+            background: #6890F0;
+            color: #fff;
+        }
+
+        .type-electric {
+            background: #F8D030;
+            color: #000;
+        }
+
+        .type-grass {
+            background: #78C850;
+            color: #000;
+        }
+
+        .type-ice {
+            background: #98D8D8;
+            color: #000;
+        }
+
+        .type-fighting {
+            background: #C03028;
+            color: #fff;
+        }
+
+        .type-poison {
+            background: #A040A0;
+            color: #fff;
+        }
+
+        .type-ground {
+            background: #E0C068;
+            color: #000;
+        }
+
+        .type-flying {
+            background: #A890F0;
+            color: #000;
+        }
+
+        .type-psychic {
+            background: #F85888;
+            color: #fff;
+        }
+
+        .type-bug {
+            background: #A8B820;
+            color: #000;
+        }
+
+        .type-rock {
+            background: #B8A038;
+            color: #000;
+        }
+
+        .type-ghost {
+            background: #705898;
+            color: #fff;
+        }
+
+        .type-dragon {
+            background: #7038F8;
+            color: #fff;
+        }
+
+        .type-dark {
+            background: #705848;
+            color: #fff;
+        }
+
+        .type-steel {
+            background: #B8B8D0;
+            color: #000;
+        }
+
+        .type-fairy {
+            background: #EE99AC;
+            color: #000;
+        }
     </style>
 </head>
+
 <body>
     <!-- Desktop Layout -->
     <div class="desktop-layout">
@@ -1483,7 +1798,8 @@
             </header>
             <section class="search-section">
                 <div class="search-container">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Enter Pokemon name or ID (e.g., pikachu, 25)">
+                    <input type="text" class="search-input" id="searchInput"
+                        placeholder="Enter Pokemon name or ID (e.g., pikachu, 25)">
                     <button class="search-btn" id="searchBtn">Search</button>
                     <button class="random-btn" id="randomBtn">Random Pokemon</button>
                 </div>
@@ -1570,7 +1886,8 @@
                 <p>Discover Pokemon on mobile!</p>
             </div>
             <div class="mobile-search">
-                <input type="text" class="mobile-search-input" id="mobileSearchInput" placeholder="Pokemon name or ID...">
+                <input type="text" class="mobile-search-input" id="mobileSearchInput"
+                    placeholder="Pokemon name or ID...">
                 <div class="mobile-search-buttons">
                     <button class="mobile-btn mobile-search-btn" id="mobileSearchBtn">Search</button>
                     <button class="mobile-btn mobile-random-btn" id="mobileRandomBtn">Random</button>
@@ -2140,85 +2457,9 @@
                 }
             }
 
-            displayDesktopStats(pokemon) {
-                const statsList = document.getElementById('statsList');
-                if (!statsList) return;
-                statsList.innerHTML = '';
-                const statNames = {
-                    'hp': 'HP',
-                    'attack': 'ATK',
-                    'defense': 'DEF',
-                    'special-attack': 'SP.ATK',
-                    'special-defense': 'SP.DEF',
-                    'speed': 'SPD'
-                };
-                pokemon.stats.forEach(stat => {
-                    const statItem = document.createElement('div');
-                    statItem.className = 'desktop-stat-item';
-                    const percentage = Math.min((stat.base_stat / 255) * 100, 100);
-                    statItem.innerHTML = `
-                        <div class="desktop-stat-name">${statNames[stat.stat.name] || stat.stat.name}</div>
-                        <div class="desktop-stat-value">${stat.base_stat}/255</div>
-                        <div class="desktop-stat-bar">
-                            <div class="desktop-stat-fill" style="width: ${percentage}%"></div>
-                        </div>
-                    `;
-                    statsList.appendChild(statItem);
-                });
-                // Add total stats
-                const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
-                const totalItem = document.createElement('div');
-                totalItem.className = 'desktop-stat-item desktop-total-stats';
-                const totalPercentage = Math.min((totalStats / 720) * 100, 100);
-                totalItem.innerHTML = `
-                    <div class="desktop-stat-name">TOTAL</div>
-                    <div class="desktop-stat-value">${totalStats}/720</div>
-                    <div class="desktop-stat-bar">
-                        <div class="desktop-stat-fill" style="width: ${totalPercentage}%"></div>
-                    </div>
-                `;
-                statsList.appendChild(totalItem);
-            }
+            displayDesktopStats(p) { const s = document.getElementById('statsList'); if (!s) return; s.innerHTML = ''; const n = { 'hp': 'HP', 'attack': 'ATK', 'defense': 'DEF', 'special-attack': 'SP.ATK', 'special-defense': 'SP.DEF', 'speed': 'SPD' }, c = v => `hsl(${(v / 255) * 120},100%,45%)`; p.stats.forEach(st => { const pr = Math.min(st.base_stat / 255 * 100, 100), cl = c(st.base_stat); s.innerHTML += `<div class="desktop-stat-item"><div class="desktop-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="desktop-stat-value">${st.base_stat}/255</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>` }); const t = p.stats.reduce((a, b) => a + b.base_stat, 0), tp = Math.min(t / 720 * 100, 100), tc = c(t / 6); s.innerHTML += `<div class="desktop-stat-item desktop-total-stats"><div class="desktop-stat-name">TOTAL</div><div class="desktop-stat-value">${t}/720</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`; }
 
-            displayMobileStats(pokemon) {
-                const statsList = document.getElementById('mobileStatsList');
-                if (!statsList) return;
-                statsList.innerHTML = '';
-                const statNames = {
-                    'hp': 'HP',
-                    'attack': 'ATK',
-                    'defense': 'DEF',
-                    'special-attack': 'SP.ATK',
-                    'special-defense': 'SP.DEF',
-                    'speed': 'SPD'
-                };
-                pokemon.stats.forEach(stat => {
-                    const statItem = document.createElement('div');
-                    statItem.className = 'mobile-stat-item';
-                    const percentage = Math.min((stat.base_stat / 255) * 100, 100);
-                    statItem.innerHTML = `
-                        <div class="mobile-stat-name">${statNames[stat.stat.name] || stat.stat.name}</div>
-                        <div class="mobile-stat-value">${stat.base_stat}/255</div>
-                        <div class="mobile-stat-bar">
-                            <div class="mobile-stat-fill" style="width: ${percentage}%"></div>
-                        </div>
-                    `;
-                    statsList.appendChild(statItem);
-                });
-                // Add total stats
-                const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
-                const totalItem = document.createElement('div');
-                totalItem.className = 'mobile-stat-item mobile-total-stats';
-                const totalPercentage = Math.min((totalStats / 720) * 100, 100);
-                totalItem.innerHTML = `
-                    <div class="mobile-stat-name">TOTAL</div>
-                    <div class="mobile-stat-value">${totalStats}/720</div>
-                    <div class="mobile-stat-bar">
-                        <div class="mobile-stat-fill" style="width: ${totalPercentage}%"></div>
-                    </div>
-                `;
-                statsList.appendChild(totalItem);
-            }
+            displayMobileStats(p) { const s = document.getElementById('mobileStatsList'); if (!s) return; s.innerHTML = ''; const n = { 'hp': 'HP', 'attack': 'ATK', 'defense': 'DEF', 'special-attack': 'SP.ATK', 'special-defense': 'SP.DEF', 'speed': 'SPD' }, c = v => `hsl(${(v / 255) * 120},100%,45%)`; p.stats.forEach(st => { const pr = Math.min(st.base_stat / 255 * 100, 100), cl = c(st.base_stat); s.innerHTML += `<div class="mobile-stat-item"><div class="mobile-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="mobile-stat-value">${st.base_stat}/255</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>` }); const t = p.stats.reduce((a, b) => a + b.base_stat, 0), tp = Math.min(t / 720 * 100, 100), tc = c(t / 6); s.innerHTML += `<div class="mobile-stat-item mobile-total-stats"><div class="mobile-stat-name">TOTAL</div><div class="mobile-stat-value">${t}/720</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`; }
 
             displayMobileDetails(pokemon) {
                 const details = document.getElementById('mobilePokemonDetails');
@@ -2296,6 +2537,7 @@
                                 <span class="move-level">${learnDisplay}</span>
                                 <span class="move-name">${this.formatPokemonName(move.name)}</span>
                                 <span class="move-type-badge type-${move.type?.name || 'normal'}">${type}</span>
+
                                 <span class="move-category">${category}</span>
                                 <span class="move-power">${power}</span>
                                 <span class="move-accuracy">${accuracy}</span>
@@ -2838,4 +3080,5 @@
         });
     </script>
 </body>
+
 </html>
