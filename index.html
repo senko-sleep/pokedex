@@ -65,7 +65,6 @@
             background: var(--accent-hover);
         }
 
-        /* Firefox scrollbar */
         * {
             scrollbar-width: thin;
             scrollbar-color: var(--accent-color) var(--secondary-bg);
@@ -76,79 +75,73 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 20px;
+            padding: 40px 20px;
             min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
         }
 
         .header {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: var(--shadow-lg);
-            width: 100%;
+            margin-bottom: 30px;
             border: 1px solid var(--border-color);
         }
 
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
         }
 
         .header p {
             color: var(--text-primary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.8;
         }
 
         .search-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
         }
 
         .search-container {
             display: flex;
-            gap: 12px;
-            width: 100%;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .search-input {
             flex: 1;
-            min-width: 250px;
-            padding: 15px 20px;
-            padding-left: 45px;
-            height: 50px;
+            padding: 16px 24px;
+            height: 56px;
             font-weight: 500;
-            border-radius: 12px;
-            font-size: 15px;
-            line-height: 20px;
-            letter-spacing: 0.5px;
+            border-radius: 14px;
+            font-size: 16px;
             outline: none;
             color: var(--text-primary);
-            background: var(--card-bg);
+            background: var(--secondary-bg);
             border: 2px solid var(--border-color);
             transition: all 200ms ease;
             box-shadow: var(--shadow);
         }
 
         .search-input:focus {
-            outline: none;
             box-shadow: var(--shadow-lg);
             border-color: var(--accent-color);
             transform: translateY(-1px);
@@ -157,37 +150,31 @@
         .search-input::placeholder {
             color: var(--text-muted);
             opacity: 0.7;
-            transition: all 200ms ease;
-        }
-
-        .search-input:focus::placeholder {
-            opacity: 0;
         }
 
         .search-btn,
         .random-btn {
-            border-radius: 12px;
-            height: 50px;
-            font-size: 14px;
+            border-radius: 14px;
+            height: 56px;
+            font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
             transition: all 200ms ease;
-            padding: 0 28px;
+            padding: 0 32px;
             letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             border: none;
-            background: var(--accent-color);
             color: #ffffff;
             box-shadow: var(--shadow-lg);
             cursor: pointer;
             white-space: nowrap;
         }
 
-        .search-btn:hover,
-        .random-btn:hover {
+        .search-btn {
+            background: var(--accent-color);
+            min-width: 120px;
+        }
+
+        .search-btn:hover {
             background: var(--accent-hover);
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
@@ -195,19 +182,21 @@
 
         .random-btn {
             background: var(--success-color);
+            min-width: 140px;
         }
 
         .random-btn:hover {
             background: #059669;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 60px;
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: var(--shadow-lg);
-            width: 100%;
             border: 1px solid var(--border-color);
         }
 
@@ -220,7 +209,7 @@
             border-top: 4px solid var(--accent-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         @keyframes spin {
@@ -235,33 +224,26 @@
 
         .pokemon-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 24px;
+            padding: 40px;
             box-shadow: var(--shadow-xl);
-            transition: all 0.3s ease;
-            width: 100%;
             border: 1px solid var(--border-color);
             display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 30px;
+            grid-template-columns: 450px 1fr;
+            gap: 40px;
+            align-items: start;
         }
 
         .pokemon-left-panel {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            width: 350px;
-            position: sticky;
-            top: 0px;
-            align-self: start;
+            gap: 24px;
         }
 
         .pokemon-image-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border-radius: 24px;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
             background: linear-gradient(135deg, var(--secondary-bg) 0%, #e2e8f0 100%);
@@ -269,11 +251,12 @@
             align-items: center;
             justify-content: center;
             border: 2px solid var(--border-color);
+            position: relative;
         }
 
         .pokemon-image {
-            width: 90%;
-            height: 90%;
+            width: 85%;
+            height: 85%;
             object-fit: contain;
             transition: transform 0.3s ease;
             cursor: pointer;
@@ -284,23 +267,23 @@
         }
 
         .sound-controls {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
-            align-items: center;
-            margin: 15px 0;
         }
 
         .sound-btn {
             background: var(--accent-color);
             color: white;
             border: none;
-            padding: 10px 18px;
-            border-radius: 25px;
+            padding: 14px 20px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            text-align: center;
         }
 
         .sound-btn:hover {
@@ -311,26 +294,23 @@
 
         .artwork-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-            gap: 10px;
-            margin: 20px 0;
-            width: 100%;
-            max-width: 340px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
         }
 
         .artwork-item {
-            width: 85px;
-            height: 85px;
+            aspect-ratio: 1;
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid var(--border-color);
             box-shadow: var(--shadow);
+            background: var(--secondary-bg);
         }
 
         .artwork-item:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
             border-color: var(--accent-color);
             box-shadow: var(--shadow-lg);
         }
@@ -339,39 +319,32 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background: var(--secondary-bg);
-        }
-
-        .pokemon-right-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
         }
 
         .pokemon-right-panel {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            min-width: 400px;
+            gap: 30px;
         }
 
         .pokemon-header {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
         .pokemon-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--text-secondary);
             text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
             margin: 0;
+            line-height: 1.1;
         }
 
         .pokemon-id {
             color: var(--text-muted);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
             margin: 0;
         }
@@ -380,14 +353,13 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            margin: 15px 0;
         }
 
         .type-badge {
-            padding: 10px 18px;
+            padding: 12px 20px;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: var(--shadow);
@@ -398,8 +370,8 @@
         }
 
         .type-icon {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: inline-block;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -407,11 +379,11 @@
 
         .pokemon-description {
             color: var(--text-primary);
-            font-size: 1.15rem;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.8;
             background: var(--secondary-bg);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 24px;
+            border-radius: 16px;
             border-left: 4px solid var(--accent-color);
             box-shadow: var(--shadow);
         }
@@ -419,13 +391,13 @@
         .pokemon-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 16px;
         }
 
         .detail-item {
             background: var(--secondary-bg);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 18px;
+            border-radius: 14px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
@@ -439,7 +411,7 @@
         .detail-label {
             color: var(--text-muted);
             font-size: 0.9rem;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
@@ -447,113 +419,48 @@
 
         .detail-value {
             color: var(--text-primary);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
-        .controls {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 25px 0;
-        }
-
-        .control-btn {
-            border-radius: 12px;
-            height: 45px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: all 200ms ease;
-            padding: 0 24px;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border: none;
-            background: var(--accent-color);
-            color: #ffffff;
-            box-shadow: var(--shadow-lg);
-            cursor: pointer;
-        }
-
-        .control-btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .control-btn.active {
-            background: var(--accent-hover);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-        }
-
-        .form-selector {
-            height: 45px;
-            padding: 0 18px;
-            border-radius: 12px;
-            background: var(--secondary-bg);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: all 200ms ease;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .form-selector:focus {
-            outline: none;
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-color);
-        }
-
-        /* Unified Container for Stats, Type Effectiveness, and Moves */
         .unified-info-container {
             background: var(--secondary-bg);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
-            width: 100%;
+            margin-top: 30px;
         }
 
         .info-navigation {
             display: flex;
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 5px;
-            margin-bottom: 25px;
+            border-radius: 14px;
+            padding: 6px;
+            margin-bottom: 30px;
             box-shadow: var(--shadow);
-            gap: 5px;
+            gap: 6px;
         }
 
         .nav-tab {
             flex: 1;
-            padding: 15px 20px;
+            padding: 16px 24px;
             border: none;
             background: transparent;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
         .nav-tab.active {
             background: var(--accent-color);
             color: white;
             box-shadow: var(--shadow);
-            transform: translateY(-1px);
         }
 
         .nav-tab:hover:not(.active) {
@@ -582,17 +489,16 @@
             }
         }
 
-        /* Updated Desktop Stats to match Mobile Style */
         .desktop-stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 20px;
         }
 
         .desktop-stat-item {
             background: var(--card-bg);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 14px;
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
@@ -605,35 +511,34 @@
         }
 
         .desktop-stat-name {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
 
         .desktop-stat-value {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .desktop-stat-bar {
             width: 100%;
-            height: 8px;
+            height: 10px;
             background: var(--border-color);
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .desktop-stat-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
-            border-radius: 4px;
+            border-radius: 5px;
         }
 
         .desktop-total-stats {
@@ -664,16 +569,16 @@
 
         .effectiveness-section {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 18px;
+            border-radius: 14px;
+            padding: 20px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
 
         .effectiveness-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             color: var(--text-secondary);
             display: flex;
             align-items: center;
@@ -687,9 +592,9 @@
         }
 
         .effectiveness-item {
-            padding: 8px 15px;
+            padding: 10px 16px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-transform: capitalize;
             display: flex;
@@ -728,9 +633,8 @@
             border: 1px solid rgba(107, 114, 128, 0.2);
         }
 
-        /* Official Pokémon-style Moves List */
         .moves-list {
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -751,37 +655,36 @@
 
         .move-header {
             display: grid;
-            grid-template-columns: auto 2fr auto auto auto auto;
+            grid-template-columns: 80px 1fr auto auto auto auto;
             align-items: center;
-            padding: 12px 16px;
-            gap: 12px;
+            padding: 14px 18px;
+            gap: 16px;
         }
 
         .move-name {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .move-level {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-align: center;
-            min-width: 50px;
         }
 
         .move-type-badge {
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 4px;
-            min-width: 80px;
+            min-width: 90px;
             justify-content: center;
         }
 
@@ -789,25 +692,26 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-muted);
+            min-width: 80px;
         }
 
         .move-power,
         .move-accuracy {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
             text-align: center;
-            min-width: 50px;
+            min-width: 60px;
         }
 
         .move-details {
             display: none;
-            padding: 0 16px 16px 16px;
+            padding: 0 18px 18px 18px;
             border-top: 1px solid var(--border-color);
-            margin-top: 8px;
+            margin-top: 10px;
             animation: slideDown 0.2s ease;
         }
 
@@ -828,31 +732,31 @@
         }
 
         .move-description {
-            margin-top: 12px;
-            padding: 12px;
+            margin-top: 14px;
+            padding: 14px;
             background: var(--secondary-bg);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--text-primary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .move-stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
+            gap: 12px;
+            margin-top: 14px;
         }
 
         .move-stat-box {
             background: var(--secondary-bg);
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 10px 14px;
+            border-radius: 8px;
             text-align: center;
         }
 
         .move-stat-label {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
@@ -860,26 +764,24 @@
         }
 
         .move-stat-value {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
-        /* Ability Info Section */
         .abilities-section {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            border-radius: 16px;
+            padding: 24px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
 
         .abilities-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -887,9 +789,9 @@
 
         .ability-item {
             background: var(--secondary-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 14px;
             border-left: 4px solid var(--accent-color);
         }
 
@@ -901,19 +803,19 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .ability-name {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .ability-badge {
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 12px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             background: var(--warning-color);
@@ -922,43 +824,41 @@
 
         .ability-description {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         .additional-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .info-section {
             background: var(--secondary-bg);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 24px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
-            width: 100%;
         }
 
         .info-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .info-content-text {
             color: var(--text-primary);
-            font-size: 1rem;
-            line-height: 1.5;
+            font-size: 1.05rem;
+            line-height: 1.6;
         }
 
         .evolution-chain {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -967,10 +867,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            padding: 12px;
+            gap: 10px;
+            padding: 16px;
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
@@ -978,24 +878,24 @@
         }
 
         .evolution-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
             box-shadow: var(--shadow-lg);
         }
 
         .evolution-image {
-            width: 65px;
-            height: 65px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
         }
 
         .evolution-name {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
         }
 
         .evolution-arrow {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--accent-color);
         }
 
@@ -1008,9 +908,9 @@
         .location-item {
             background: var(--accent-color);
             color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 16px;
+            font-size: 0.9rem;
             font-weight: 500;
             box-shadow: var(--shadow);
         }
@@ -1019,12 +919,11 @@
             background: rgba(239, 68, 68, 0.1);
             border: 2px solid rgba(239, 68, 68, 0.2);
             color: #dc2626;
-            padding: 25px;
-            border-radius: 16px;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
             margin: 20px 0;
             box-shadow: var(--shadow-lg);
-            width: 100%;
         }
 
         .modal {
@@ -1034,9 +933,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .modal.active {
@@ -1047,64 +946,72 @@
 
         .modal-content {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             max-width: 90vw;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-xl);
             border: 1px solid var(--border-color);
-            width: fit-content;
         }
 
         .modal img {
             max-width: 100%;
             height: auto;
+            border-radius: 12px;
         }
 
         .close-btn {
             background: var(--error-color);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 12px 20px;
+            border-radius: 10px;
             cursor: pointer;
             float: right;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             box-shadow: var(--shadow);
+            font-weight: 600;
         }
 
-        /* Mobile Layout - Enhanced for Feature Parity */
+        .close-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Mobile Layout */
         .mobile-layout {
             display: none;
-            padding: 10px;
+            padding: 16px;
             background: var(--primary-bg);
         }
 
         .mobile-container {
             width: 100%;
+            max-width: 600px;
             margin: 0 auto;
         }
 
         .mobile-header {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 20px;
+            padding: 24px;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
 
         .mobile-header h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .mobile-header p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-muted);
         }
 
@@ -1112,20 +1019,21 @@
             background: var(--card-bg);
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
         }
 
         .mobile-search-input {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             border: 2px solid var(--border-color);
-            border-radius: 15px;
+            border-radius: 14px;
             font-size: 16px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             background: var(--secondary-bg);
             box-shadow: var(--shadow);
+            font-weight: 500;
         }
 
         .mobile-search-input:focus {
@@ -1135,20 +1043,22 @@
         }
 
         .mobile-search-buttons {
-            display: flex;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
         .mobile-btn {
-            flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 15px;
+            border-radius: 14px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .mobile-search-btn {
@@ -1161,15 +1071,14 @@
             color: white;
         }
 
-        .mobile-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+        .mobile-btn:active {
+            transform: scale(0.98);
         }
 
         .mobile-loading {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
@@ -1178,48 +1087,46 @@
         .mobile-pokemon-card {
             background: var(--card-bg);
             border-radius: 20px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            width: 100%;
         }
 
         .mobile-pokemon-hero {
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
-            padding: 25px;
+            padding: 30px 20px;
             text-align: center;
             color: white;
-            position: relative;
         }
 
         .mobile-pokemon-image {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             object-fit: contain;
-            margin: 0 auto 15px;
-            background: rgba(255, 255, 255, 0.1);
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 20px;
-            padding: 10px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        .mobile-pokemon-image:hover {
-            transform: scale(1.05);
+        .mobile-pokemon-image:active {
+            transform: scale(0.95);
         }
 
         .mobile-pokemon-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .mobile-pokemon-id {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .mobile-pokemon-types {
@@ -1230,13 +1137,13 @@
         }
 
         .mobile-type-badge {
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 25px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
@@ -1245,30 +1152,28 @@
         }
 
         .mobile-controls {
-            padding: 20px;
+            padding: 16px;
             background: var(--secondary-bg);
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         .mobile-control-btn {
-            padding: 10px 16px;
+            padding: 12px;
             border: none;
-            border-radius: 20px;
+            border-radius: 12px;
             background: var(--accent-color);
             color: white;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
 
-        .mobile-control-btn:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
+        .mobile-control-btn:active {
+            transform: scale(0.95);
         }
 
         .mobile-content {
@@ -1277,35 +1182,137 @@
 
         .mobile-description {
             background: var(--secondary-bg);
-            padding: 15px;
-            border-radius: 15px;
+            padding: 16px;
+            border-radius: 14px;
             margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
             box-shadow: var(--shadow);
             border-left: 4px solid var(--accent-color);
         }
 
-        .mobile-tabs {
-            display: flex;
+        .mobile-artwork-section {
             background: var(--secondary-bg);
-            border-radius: 15px;
-            padding: 5px;
+            border-radius: 14px;
+            padding: 20px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
 
+        .mobile-artwork-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .mobile-artwork-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .mobile-artwork-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow);
+            background: var(--card-bg);
+        }
+
+        .mobile-artwork-item:active {
+            transform: scale(0.95);
+        }
+
+        .mobile-artwork-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .mobile-abilities-section {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .mobile-abilities-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .mobile-ability-item {
+            background: var(--secondary-bg);
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .mobile-ability-item.hidden {
+            border-left-color: var(--warning-color);
+        }
+
+        .mobile-ability-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .mobile-ability-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .mobile-ability-badge {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .mobile-ability-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .mobile-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--secondary-bg);
+            border-radius: 14px;
+            padding: 6px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            gap: 4px;
+        }
+
         .mobile-tab {
-            flex: 1;
             padding: 12px 8px;
             border: none;
             background: transparent;
             border-radius: 10px;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--text-muted);
+            text-transform: uppercase;
         }
 
         .mobile-tab.active {
@@ -1317,7 +1324,7 @@
         .mobile-tab-content {
             display: none;
             background: var(--secondary-bg);
-            border-radius: 15px;
+            border-radius: 14px;
             padding: 20px;
             box-shadow: var(--shadow);
         }
@@ -1328,13 +1335,13 @@
 
         .mobile-stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .mobile-stat-item {
             background: var(--card-bg);
-            padding: 15px;
+            padding: 16px;
             border-radius: 12px;
             text-align: center;
             box-shadow: var(--shadow);
@@ -1346,27 +1353,26 @@
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .mobile-stat-value {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-secondary);
+            margin-bottom: 8px;
         }
 
         .mobile-stat-bar {
             width: 100%;
-            height: 6px;
+            height: 8px;
             background: var(--border-color);
-            border-radius: 3px;
-            margin-top: 8px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .mobile-stat-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--error-color) 0%, var(--warning-color) 50%, var(--success-color) 100%);
             transition: width 0.8s ease;
         }
 
@@ -1392,13 +1398,13 @@
 
         .mobile-details-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .mobile-detail-item {
             background: var(--card-bg);
-            padding: 12px;
+            padding: 14px;
             border-radius: 10px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
@@ -1409,17 +1415,17 @@
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .mobile-detail-value {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .mobile-moves-list {
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -1430,9 +1436,11 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
+            border-radius: 8px;
+            margin-bottom: 2px;
         }
 
-        .mobile-move-item:hover {
+        .mobile-move-item:active {
             background: var(--accent-bg);
         }
 
@@ -1440,12 +1448,12 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-            padding: 10px 12px;
-            gap: 8px;
+            padding: 12px;
+            gap: 10px;
         }
 
         .mobile-move-name {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -1455,12 +1463,13 @@
             font-weight: 600;
             color: var(--text-secondary);
             text-align: center;
+            min-width: 50px;
         }
 
         .mobile-move-type-badge {
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             display: flex;
@@ -1480,29 +1489,29 @@
 
         .mobile-move-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .mobile-move-stat {
             text-align: center;
-            padding: 6px 4px;
+            padding: 8px;
             background: var(--secondary-bg);
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
         }
 
         .mobile-move-stat-label {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .mobile-move-stat-value {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-primary);
         }
@@ -1511,193 +1520,48 @@
             margin-top: 10px;
             padding: 10px;
             background: var(--secondary-bg);
-            border-radius: 6px;
+            border-radius: 8px;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            line-height: 1.4;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         .mobile-effectiveness-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 16px;
         }
 
         .mobile-effectiveness-section {
             background: var(--card-bg);
-            padding: 15px;
+            padding: 16px;
             border-radius: 12px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
 
         .mobile-effectiveness-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-secondary);
         }
 
         .mobile-effectiveness-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
         }
 
         .mobile-effectiveness-item {
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 8px 14px;
+            border-radius: 16px;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: capitalize;
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        /* Enhanced Artwork Gallery for Mobile */
-        .mobile-artwork-section {
-            background: var(--secondary-bg);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .mobile-artwork-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .mobile-artwork-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-            gap: 10px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .mobile-artwork-item {
-            width: 70px;
-            height: 70px;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid var(--border-color);
-            box-shadow: var(--shadow);
-        }
-
-        .mobile-artwork-item:hover {
-            transform: scale(1.1);
-            border-color: var(--accent-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .mobile-artwork-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: var(--card-bg);
-        }
-
-        .mobile-abilities-section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-        }
-
-        .mobile-abilities-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-
-        .mobile-ability-item {
-            background: var(--secondary-bg);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .mobile-ability-item.hidden {
-            border-left-color: var(--warning-color);
-        }
-
-        .mobile-ability-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-
-        .mobile-ability-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .mobile-ability-badge {
-            padding: 3px 8px;
-            border-radius: 10px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            background: var(--warning-color);
-            color: white;
-        }
-
-        .mobile-ability-description {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .desktop-layout {
-                display: none;
-            }
-
-            .mobile-layout {
-                display: block;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .desktop-layout {
-                display: flex;
-            }
-
-            .mobile-layout {
-                display: none;
-            }
-        }
-
-        /* Desktop responsive adjustments */
-        @media (max-width: 1200px) and (min-width: 769px) {
-            .pokemon-card {
-                grid-template-columns: 1fr;
-            }
-
-            .pokemon-left-panel {
-                position: sticky;
-                align-items: center;
-                width: calc(100% - 100px);
-                height: calc(100% - 100px);
-            }
-
-            .pokemon-right-panel {
-                min-width: auto;
-            }
         }
 
         /* Type colors */
@@ -1790,6 +1654,102 @@
             background: #EE99AC;
             color: #000;
         }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .desktop-layout {
+                display: none;
+            }
+
+            .mobile-layout {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .desktop-layout {
+                display: flex;
+            }
+
+            .mobile-layout {
+                display: none;
+            }
+        }
+
+        /* Desktop responsive adjustments */
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .pokemon-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .pokemon-left-panel {
+                max-width: 600px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                align-items: start;
+            }
+
+            .pokemon-image-container {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .sound-controls {
+                grid-column: 1;
+            }
+
+            .artwork-gallery {
+                grid-column: 2;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 769px) {
+            .pokemon-left-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .sound-controls {
+                grid-column: 1;
+            }
+
+            .artwork-gallery {
+                grid-column: 1;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .mobile-pokemon-title {
+                font-size: 1.8rem;
+            }
+
+            .mobile-pokemon-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            .mobile-artwork-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .mobile-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mobile-tab {
+                font-size: 11px;
+                padding: 10px 6px;
+            }
+        }
     </style>
 </head>
 
@@ -1824,56 +1784,51 @@
                             <button id="playCry" class="sound-btn">🔊 Play Cry</button>
                             <button id="playLatestCry" class="sound-btn">🎵 Latest Cry</button>
                         </div>
-                      
                         <div class="artwork-gallery" id="artworkGallery"></div>
-                        
                     </div>
-                    <div class="pokemon-right-content">
-                        <div class="pokemon-right-panel">
-                            <div class="pokemon-header">
-                                <h2 id="pokemonTitle" class="pokemon-title"></h2>
-                                <p id="pokemonId" class="pokemon-id"></p>
-                                <div id="pokemonTypes" class="pokemon-types"></div>
-                                <div id="pokemonDescription" class="pokemon-description"></div>
-                            </div>
-                            <div class="pokemon-details" id="pokemonDetails"></div>
-                            <div id="abilitiesSection" class="abilities-section"></div>
-                            <div class="additional-info" id="additionalInfo"></div>
+                    <div class="pokemon-right-panel">
+                        <div class="pokemon-header">
+                            <h2 id="pokemonTitle" class="pokemon-title"></h2>
+                            <p id="pokemonId" class="pokemon-id"></p>
+                            <div id="pokemonTypes" class="pokemon-types"></div>
+                            <div id="pokemonDescription" class="pokemon-description"></div>
                         </div>
-                        <!-- Unified Container for Stats, Type Effectiveness, and Moves -->
-                        <div class="unified-info-container">
-                            <div class="info-navigation">
-                                <button class="nav-tab active" data-tab="stats">Base Stats</button>
-                                <button class="nav-tab" data-tab="types">Type Effectiveness</button>
-                                <button class="nav-tab" data-tab="moves">Moves</button>
+                        <div class="pokemon-details" id="pokemonDetails"></div>
+                        <div id="abilitiesSection" class="abilities-section"></div>
+                        <div class="additional-info" id="additionalInfo"></div>
+                    </div>
+                </div>
+                <div class="unified-info-container">
+                    <div class="info-navigation">
+                        <button class="nav-tab active" data-tab="stats">Base Stats</button>
+                        <button class="nav-tab" data-tab="types">Type Effectiveness</button>
+                        <button class="nav-tab" data-tab="moves">Moves</button>
+                    </div>
+                    <div id="statsContent" class="info-content active">
+                        <div id="statsList" class="desktop-stats-grid"></div>
+                    </div>
+                    <div id="typesContent" class="info-content">
+                        <div class="type-effectiveness">
+                            <div class="effectiveness-section">
+                                <h4 class="effectiveness-title">Weaknesses (2x)</h4>
+                                <div id="weaknessList" class="effectiveness-list"></div>
                             </div>
-                            <div id="statsContent" class="info-content active">
-                                <div id="statsList" class="desktop-stats-grid"></div>
+                            <div class="effectiveness-section">
+                                <h4 class="effectiveness-title">Resistances (0.5x)</h4>
+                                <div id="resistancesList" class="effectiveness-list"></div>
                             </div>
-                            <div id="typesContent" class="info-content">
-                                <div class="type-effectiveness">
-                                    <div class="effectiveness-section">
-                                        <h4 class="effectiveness-title">Weaknesses (2x)</h4>
-                                        <div id="weaknessList" class="effectiveness-list"></div>
-                                    </div>
-                                    <div class="effectiveness-section">
-                                        <h4 class="effectiveness-title">Resistances (0.5x)</h4>
-                                        <div id="resistancesList" class="effectiveness-list"></div>
-                                    </div>
-                                    <div class="effectiveness-section">
-                                        <h4 class="effectiveness-title">Immunities (0x)</h4>
-                                        <div id="immunitiesList" class="effectiveness-list"></div>
-                                    </div>
-                                    <div class="effectiveness-section">
-                                        <h4 class="effectiveness-title">Strong Against (2x)</h4>
-                                        <div id="strengthsList" class="effectiveness-list"></div>
-                                    </div>
-                                </div>
+                            <div class="effectiveness-section">
+                                <h4 class="effectiveness-title">Immunities (0x)</h4>
+                                <div id="immunitiesList" class="effectiveness-list"></div>
                             </div>
-                            <div id="movesContent" class="info-content">
-                                <div id="movesList" class="moves-list"></div>
+                            <div class="effectiveness-section">
+                                <h4 class="effectiveness-title">Strong Against (2x)</h4>
+                                <div id="strengthsList" class="effectiveness-list"></div>
                             </div>
                         </div>
+                    </div>
+                    <div id="movesContent" class="info-content">
+                        <div id="movesList" class="moves-list"></div>
                     </div>
                 </div>
             </div>
@@ -1915,7 +1870,7 @@
                     <div class="mobile-content">
                         <div id="mobilePokemonDescription" class="mobile-description"></div>
                         <div class="mobile-artwork-section">
-                            <div class="mobile-artwork-title">🎨 Artwork Gallery</div>
+                            <div class="mobile-artwork-title">Artwork Gallery</div>
                             <div id="mobileArtworkGallery" class="mobile-artwork-gallery"></div>
                         </div>
                         <div id="mobileAbilitiesSection" class="mobile-abilities-section"></div>
@@ -2031,16 +1986,12 @@
             }
 
             bindEvents() {
-                // Desktop events
                 const searchBtn = document.getElementById('searchBtn');
                 const searchInput = document.getElementById('searchInput');
                 const randomBtn = document.getElementById('randomBtn');
-                const shinyToggle = document.getElementById('shinyToggle');
-                const formSelector = document.getElementById('formSelector');
                 const playCry = document.getElementById('playCry');
                 const playLatestCry = document.getElementById('playLatestCry');
 
-                // Mobile events
                 const mobileSearchBtn = document.getElementById('mobileSearchBtn');
                 const mobileSearchInput = document.getElementById('mobileSearchInput');
                 const mobileRandomBtn = document.getElementById('mobileRandomBtn');
@@ -2048,20 +1999,15 @@
                 const mobilePlayCry = document.getElementById('mobilePlayCry');
                 const mobilePlayLatestCry = document.getElementById('mobilePlayLatestCry');
 
-                // Modal events
                 const closeModal = document.getElementById('closeModal');
                 const modal = document.getElementById('artworkModal');
 
-                // Desktop bindings
                 if (searchBtn) searchBtn.addEventListener('click', () => this.searchPokemon());
                 if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.searchPokemon(); });
                 if (randomBtn) randomBtn.addEventListener('click', () => this.loadRandomPokemon());
-                if (shinyToggle) shinyToggle.addEventListener('click', () => this.toggleShiny());
-                if (formSelector) formSelector.addEventListener('change', (e) => this.loadPokemonForm(e.target.value));
                 if (playCry) playCry.addEventListener('click', () => this.playPokemonCry('legacy'));
                 if (playLatestCry) playLatestCry.addEventListener('click', () => this.playPokemonCry('latest'));
 
-                // Mobile bindings
                 if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', () => this.searchPokemon(true));
                 if (mobileSearchInput) mobileSearchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.searchPokemon(true); });
                 if (mobileRandomBtn) mobileRandomBtn.addEventListener('click', () => this.loadRandomPokemon());
@@ -2069,25 +2015,21 @@
                 if (mobilePlayCry) mobilePlayCry.addEventListener('click', () => this.playPokemonCry('legacy'));
                 if (mobilePlayLatestCry) mobilePlayLatestCry.addEventListener('click', () => this.playPokemonCry('latest'));
 
-                // Modal bindings
                 if (closeModal) closeModal.addEventListener('click', () => this.closeModal());
                 if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) this.closeModal(); });
 
-                // Desktop navigation tabs
                 document.querySelectorAll('.nav-tab').forEach(tab => {
                     tab.addEventListener('click', (e) => {
                         this.switchDesktopTab(e.target.dataset.tab);
                     });
                 });
 
-                // Mobile tab bindings
                 document.querySelectorAll('.mobile-tab').forEach(tab => {
                     tab.addEventListener('click', (e) => {
                         this.switchMobileTab(e.target.dataset.tab);
                     });
                 });
 
-                // Resize handler
                 window.addEventListener('resize', () => this.handleResize());
             }
 
@@ -2095,19 +2037,16 @@
                 const wasMobile = this.isMobile;
                 this.isMobile = window.innerWidth <= 768;
                 if (wasMobile !== this.isMobile && this.currentPokemon) {
-                    // Re-display Pokemon when switching between mobile/desktop
                     this.displayPokemon(this.currentPokemon);
                 }
             }
 
             switchDesktopTab(tabName) {
                 this.activeDesktopTab = tabName;
-                // Update tab buttons
                 document.querySelectorAll('.nav-tab').forEach(tab => {
                     tab.classList.remove('active');
                 });
                 document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-                // Update tab content
                 document.querySelectorAll('.info-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -2116,12 +2055,10 @@
 
             switchMobileTab(tabName) {
                 this.activeTab = tabName;
-                // Update tab buttons
                 document.querySelectorAll('.mobile-tab').forEach(tab => {
                     tab.classList.remove('active');
                 });
-                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-                // Update tab content
+                document.querySelector(`.mobile-tab[data-tab="${tabName}"]`).classList.add('active');
                 document.querySelectorAll('.mobile-tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -2153,23 +2090,18 @@
                         this.showLoading(false);
                         return;
                     }
-                    // Load Pokemon data
                     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
                     if (!response.ok) throw new Error('Pokemon not found');
                     const pokemon = await response.json();
-                    // Load species data
                     const speciesResponse = await fetch(pokemon.species.url);
                     const species = await speciesResponse.json();
-                    // Load evolution chain
                     let evolutionChain = null;
                     if (species.evolution_chain) {
                         const evolutionResponse = await fetch(species.evolution_chain.url);
                         evolutionChain = await evolutionResponse.json();
                     }
-                    // Load location data
                     const locationResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/encounters`);
                     const locations = await locationResponse.json();
-                    // Load abilities with descriptions
                     const abilitiesData = await Promise.all(
                         pokemon.abilities.map(async (abilityInfo) => {
                             try {
@@ -2199,13 +2131,11 @@
                             }
                         })
                     );
-                    // Load enhanced moves data with full details, filter to level-up only
                     const movesData = await Promise.all(
                         pokemon.moves.map(async (move) => {
                             try {
                                 const moveResponse = await fetch(move.move.url);
                                 const moveData = await moveResponse.json();
-                                // Find the first version group detail (usually earliest gen)
                                 const detail = move.version_group_details[0];
                                 if (detail && detail.move_learn_method.name === 'level-up') {
                                     return {
@@ -2221,11 +2151,8 @@
                             }
                         })
                     );
-                    // Filter out non-level-up and failed loads
                     let validMovesData = movesData.filter(move => move !== null);
-                    // Sort by level learned ascending
                     validMovesData.sort((a, b) => a.level_learned - b.level_learned);
-                    // Combine all data
                     const pokemonData = {
                         ...pokemon,
                         species: species,
@@ -2237,54 +2164,10 @@
                     this.cache.set(cacheKey, pokemonData);
                     this.currentPokemon = pokemonData;
                     this.displayPokemon(pokemonData);
-                    if (!this.isMobile) {
-                        await this.loadPokemonForms(pokemon.id);
-                    }
                 } catch (error) {
                     this.showError(`Error loading Pokemon: ${error.message}`);
                 } finally {
                     this.showLoading(false);
-                }
-            }
-
-            async loadPokemonForm(formUrl) {
-                if (!formUrl) return;
-                this.showLoading(true);
-                try {
-                    const response = await fetch(formUrl);
-                    const pokemon = await response.json();
-                    const speciesResponse = await fetch(pokemon.species.url);
-                    const species = await speciesResponse.json();
-                    const pokemonData = { ...pokemon, species: species };
-                    this.currentPokemon = pokemonData;
-                    this.displayPokemon(pokemonData);
-                } catch (error) {
-                    this.showError(`Error loading Pokemon form: ${error.message}`);
-                } finally {
-                    this.showLoading(false);
-                }
-            }
-
-            async loadPokemonForms(pokemonId) {
-                try {
-                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
-                    const species = await response.json();
-                    const formSelector = document.getElementById('formSelector');
-                    if (!formSelector) return;
-                    formSelector.innerHTML = '<option value="">Select Form</option>';
-                    if (species.varieties && species.varieties.length > 1) {
-                        species.varieties.forEach(variety => {
-                            const option = document.createElement('option');
-                            option.value = variety.pokemon.url;
-                            option.textContent = this.formatPokemonName(variety.pokemon.name);
-                            formSelector.appendChild(option);
-                        });
-                        formSelector.style.display = 'block';
-                    } else {
-                        formSelector.style.display = 'none';
-                    }
-                } catch (error) {
-                    console.error('Error loading forms:', error);
                 }
             }
 
@@ -2314,16 +2197,13 @@
                 const details = document.getElementById('pokemonDetails');
                 const additionalInfo = document.getElementById('additionalInfo');
                 if (!container) return;
-                // Basic info
                 title.textContent = this.formatPokemonName(pokemon.name);
                 id.textContent = `#${pokemon.id.toString().padStart(4, '0')}`;
-                // Main image
                 const imageUrl = this.isShiny
                     ? pokemon.sprites.other['official-artwork'].front_shiny || pokemon.sprites.front_shiny
                     : pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default;
                 image.src = imageUrl;
                 image.alt = pokemon.name;
-                // Types with icons
                 types.innerHTML = '';
                 pokemon.types.forEach(typeInfo => {
                     const typeBadge = document.createElement('span');
@@ -2335,14 +2215,12 @@
                     typeBadge.appendChild(typeText);
                     types.appendChild(typeBadge);
                 });
-                // Description
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
                 );
                 description.textContent = englishEntry
                     ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
                     : 'No description available.';
-                // Display all sections
                 this.displayArtworkGallery(pokemon);
                 this.displayPokemonDetails(pokemon, details);
                 this.displayAbilities(pokemon);
@@ -2350,12 +2228,6 @@
                 this.displayDesktopStats(pokemon);
                 this.displayTypeEffectiveness(pokemon);
                 this.displayDesktopMoves(pokemon);
-                // Update shiny toggle
-                const shinyToggle = document.getElementById('shinyToggle');
-                if (shinyToggle) {
-                    shinyToggle.textContent = this.isShiny ? '✨ Normal Mode' : '✨ Shiny Mode';
-                    shinyToggle.classList.toggle('active', this.isShiny);
-                }
                 container.style.display = 'block';
             }
 
@@ -2367,16 +2239,13 @@
                 const types = document.getElementById('mobilePokemonTypes');
                 const description = document.getElementById('mobilePokemonDescription');
                 if (!container) return;
-                // Basic info
                 title.textContent = this.formatPokemonName(pokemon.name);
                 id.textContent = `#${pokemon.id.toString().padStart(4, '0')}`;
-                // Main image
                 const imageUrl = this.isShiny
                     ? pokemon.sprites.other['official-artwork'].front_shiny || pokemon.sprites.front_shiny
                     : pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default;
                 image.src = imageUrl;
                 image.alt = pokemon.name;
-                // Types with icons
                 types.innerHTML = '';
                 pokemon.types.forEach(typeInfo => {
                     const typeBadge = document.createElement('span');
@@ -2388,21 +2257,18 @@
                     typeBadge.appendChild(typeText);
                     types.appendChild(typeBadge);
                 });
-                // Description
                 const englishEntry = pokemon.species.flavor_text_entries.find(
                     entry => entry.language.name === 'en'
                 );
                 description.textContent = englishEntry
                     ? englishEntry.flavor_text.replace(/\f/g, ' ').replace(/\n/g, ' ')
                     : 'No description available.';
-                // Display mobile sections
                 this.displayMobileArtworkGallery(pokemon);
                 this.displayMobileAbilities(pokemon);
                 this.displayMobileStats(pokemon);
                 this.displayMobileDetails(pokemon);
                 this.displayMobileMoves(pokemon);
                 this.displayMobileTypeEffectiveness(pokemon);
-                // Update shiny toggle
                 const shinyToggle = document.getElementById('mobileShinyToggle');
                 if (shinyToggle) {
                     shinyToggle.textContent = this.isShiny ? '✨ Normal' : '✨ Shiny';
@@ -2414,7 +2280,7 @@
                 const section = document.getElementById('abilitiesSection');
                 if (!section) return;
                 section.innerHTML = `
-                    <div class="abilities-title">Abilities</div>
+                    <div class="abilities-title">💫 Abilities</div>
                 `;
                 if (pokemon.abilitiesData && pokemon.abilitiesData.length > 0) {
                     pokemon.abilitiesData.forEach(ability => {
@@ -2438,7 +2304,7 @@
                 const section = document.getElementById('mobileAbilitiesSection');
                 if (!section) return;
                 section.innerHTML = `
-                    <div class="mobile-abilities-title">💫 Abilities</div>
+                    <div class="mobile-abilities-title">Abilities</div>
                 `;
                 if (pokemon.abilitiesData && pokemon.abilitiesData.length > 0) {
                     pokemon.abilitiesData.forEach(ability => {
@@ -2458,9 +2324,53 @@
                 }
             }
 
-            displayDesktopStats(p) { const s = document.getElementById('statsList'); if (!s) return; s.innerHTML = ''; const n = { 'hp': 'HP', 'attack': 'ATK', 'defense': 'DEF', 'special-attack': 'SP.ATK', 'special-defense': 'SP.DEF', 'speed': 'SPD' }, c = v => `hsl(${(v / 255) * 120},100%,45%)`; p.stats.forEach(st => { const pr = Math.min(st.base_stat / 255 * 100, 100), cl = c(st.base_stat); s.innerHTML += `<div class="desktop-stat-item"><div class="desktop-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="desktop-stat-value">${st.base_stat}/255</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>` }); const t = p.stats.reduce((a, b) => a + b.base_stat, 0), tp = Math.min(t / 720 * 100, 100), tc = c(t / 6); s.innerHTML += `<div class="desktop-stat-item desktop-total-stats"><div class="desktop-stat-name">TOTAL</div><div class="desktop-stat-value">${t}/720</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`; }
+            displayDesktopStats(p) {
+                const s = document.getElementById('statsList');
+                if (!s) return;
+                s.innerHTML = '';
+                const n = {
+                    'hp': 'HP',
+                    'attack': 'ATK',
+                    'defense': 'DEF',
+                    'special-attack': 'SP.ATK',
+                    'special-defense': 'SP.DEF',
+                    'speed': 'SPD'
+                };
+                const c = v => `hsl(${(v / 255) * 120},100%,45%)`;
+                p.stats.forEach(st => {
+                    const pr = Math.min(st.base_stat / 255 * 100, 100);
+                    const cl = c(st.base_stat);
+                    s.innerHTML += `<div class="desktop-stat-item"><div class="desktop-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="desktop-stat-value">${st.base_stat}/255</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>`;
+                });
+                const t = p.stats.reduce((a, b) => a + b.base_stat, 0);
+                const tp = Math.min(t / 720 * 100, 100);
+                const tc = c(t / 6);
+                s.innerHTML += `<div class="desktop-stat-item desktop-total-stats"><div class="desktop-stat-name">TOTAL</div><div class="desktop-stat-value">${t}/720</div><div class="desktop-stat-bar"><div class="desktop-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`;
+            }
 
-            displayMobileStats(p) { const s = document.getElementById('mobileStatsList'); if (!s) return; s.innerHTML = ''; const n = { 'hp': 'HP', 'attack': 'ATK', 'defense': 'DEF', 'special-attack': 'SP.ATK', 'special-defense': 'SP.DEF', 'speed': 'SPD' }, c = v => `hsl(${(v / 255) * 120},100%,45%)`; p.stats.forEach(st => { const pr = Math.min(st.base_stat / 255 * 100, 100), cl = c(st.base_stat); s.innerHTML += `<div class="mobile-stat-item"><div class="mobile-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="mobile-stat-value">${st.base_stat}/255</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>` }); const t = p.stats.reduce((a, b) => a + b.base_stat, 0), tp = Math.min(t / 720 * 100, 100), tc = c(t / 6); s.innerHTML += `<div class="mobile-stat-item mobile-total-stats"><div class="mobile-stat-name">TOTAL</div><div class="mobile-stat-value">${t}/720</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`; }
+            displayMobileStats(p) {
+                const s = document.getElementById('mobileStatsList');
+                if (!s) return;
+                s.innerHTML = '';
+                const n = {
+                    'hp': 'HP',
+                    'attack': 'ATK',
+                    'defense': 'DEF',
+                    'special-attack': 'SP.ATK',
+                    'special-defense': 'SP.DEF',
+                    'speed': 'SPD'
+                };
+                const c = v => `hsl(${(v / 255) * 120},100%,45%)`;
+                p.stats.forEach(st => {
+                    const pr = Math.min(st.base_stat / 255 * 100, 100);
+                    const cl = c(st.base_stat);
+                    s.innerHTML += `<div class="mobile-stat-item"><div class="mobile-stat-name">${n[st.stat.name] || st.stat.name}</div><div class="mobile-stat-value">${st.base_stat}/255</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${pr}%;background:${cl}"></div></div></div>`;
+                });
+                const t = p.stats.reduce((a, b) => a + b.base_stat, 0);
+                const tp = Math.min(t / 720 * 100, 100);
+                const tc = c(t / 6);
+                s.innerHTML += `<div class="mobile-stat-item mobile-total-stats"><div class="mobile-stat-name">TOTAL</div><div class="mobile-stat-value">${t}/720</div><div class="mobile-stat-bar"><div class="mobile-stat-fill" style="width:${tp}%;background:${tc}"></div></div></div>`;
+            }
 
             displayMobileDetails(pokemon) {
                 const details = document.getElementById('mobilePokemonDetails');
@@ -2538,7 +2448,6 @@
                                 <span class="move-level">${learnDisplay}</span>
                                 <span class="move-name">${this.formatPokemonName(move.name)}</span>
                                 <span class="move-type-badge type-${move.type?.name || 'normal'}">${type}</span>
-
                                 <span class="move-category">${category}</span>
                                 <span class="move-power">${power}</span>
                                 <span class="move-accuracy">${accuracy}</span>
@@ -2569,7 +2478,6 @@
                                 <div class="move-description">${this.getMoveDescription(move)}</div>
                             </div>
                         `;
-                        // Toggle details on click
                         moveItem.addEventListener('click', () => {
                             moveItem.classList.toggle('expanded');
                         });
@@ -2630,7 +2538,6 @@
                                 <div class="mobile-move-description">${this.getMoveDescription(move)}</div>
                             </div>
                         `;
-                        // Toggle details on click
                         moveItem.addEventListener('click', () => {
                             moveItem.classList.toggle('expanded');
                         });
@@ -2647,19 +2554,19 @@
                 const effectiveness = this.calculateTypeEffectiveness(pokemon);
                 container.innerHTML = `
                     <div class="mobile-effectiveness-section">
-                        <div class="mobile-effectiveness-title">🛡️ Weaknesses (2x)</div>
+                        <div class="mobile-effectiveness-title">Weaknesses (2x)</div>
                         <div class="mobile-effectiveness-list" id="mobileWeaknessList"></div>
                     </div>
                     <div class="mobile-effectiveness-section">
-                        <div class="mobile-effectiveness-title">💪 Resistances (0.5x)</div>
+                        <div class="mobile-effectiveness-title">Resistances (0.5x)</div>
                         <div class="mobile-effectiveness-list" id="mobileResistancesList"></div>
                     </div>
                     <div class="mobile-effectiveness-section">
-                        <div class="mobile-effectiveness-title">🚫 Immunities (0x)</div>
+                        <div class="mobile-effectiveness-title">Immunities (0x)</div>
                         <div class="mobile-effectiveness-list" id="mobileImmunitiesList"></div>
                     </div>
                     <div class="mobile-effectiveness-section">
-                        <div class="mobile-effectiveness-title">⚔️ Strong Against (2x)</div>
+                        <div class="mobile-effectiveness-title">Strong Against (2x)</div>
                         <div class="mobile-effectiveness-list" id="mobileStrengthsList"></div>
                     </div>
                 `;
@@ -2782,7 +2689,6 @@
             displayAdditionalInfo(pokemon, container) {
                 if (!container) return;
                 container.innerHTML = '';
-                // Evolution Chain
                 if (pokemon.evolutionChain) {
                     const evolutionSection = document.createElement('div');
                     evolutionSection.className = 'info-section';
@@ -2795,12 +2701,11 @@
                     container.appendChild(evolutionSection);
                     this.displayEvolutionChain(pokemon.evolutionChain);
                 }
-                // Locations
                 if (pokemon.locations && pokemon.locations.length > 0) {
                     const locationSection = document.createElement('div');
                     locationSection.className = 'info-section';
                     const locationNames = pokemon.locations.map(loc => this.formatPokemonName(loc.location_area.name))
-                        .slice(0, 10); // Limit to first 10 locations
+                        .slice(0, 10);
                     locationSection.innerHTML = `
                         <div class="info-title">Found In</div>
                         <div class="info-content-text">
@@ -2811,7 +2716,6 @@
                     `;
                     container.appendChild(locationSection);
                 }
-                // Habitat
                 if (pokemon.species.habitat) {
                     const habitatSection = document.createElement('div');
                     habitatSection.className = 'info-section';
@@ -2821,7 +2725,6 @@
                     `;
                     container.appendChild(habitatSection);
                 }
-                // Color & Shape
                 const physicalSection = document.createElement('div');
                 physicalSection.className = 'info-section';
                 physicalSection.innerHTML = `
@@ -2832,7 +2735,6 @@
                     </div>
                 `;
                 container.appendChild(physicalSection);
-                // Status
                 const statusSection = document.createElement('div');
                 statusSection.className = 'info-section';
                 const status = pokemon.species.is_legendary ? 'Legendary' :
@@ -2899,7 +2801,6 @@
             calculateTypeEffectiveness(pokemon) {
                 if (!this.typeChart) return { weaknesses: [], resistances: [], immunities: [], strengths: [] };
                 const pokemonTypes = pokemon.types.map(t => t.type.name);
-                // Defensive calculations
                 const weaknesses = [];
                 const resistances = [];
                 const immunities = [];
@@ -2922,7 +2823,6 @@
                         resistances.push(attackingType);
                     }
                 });
-                // Offensive strengths
                 const strengths = new Set();
                 pokemonTypes.forEach(attackingType => {
                     this.typeChart[attackingType].double_damage_to.forEach(strongType => {
@@ -3064,18 +2964,8 @@
                 if (errorDiv) errorDiv.style.display = 'none';
                 if (mobileErrorDiv) mobileErrorDiv.style.display = 'none';
             }
-
-            isColorDark(color) {
-                const hex = color.replace('#', '');
-                const r = parseInt(hex.substr(0, 2), 16);
-                const g = parseInt(hex.substr(2, 2), 16);
-                const b = parseInt(hex.substr(4, 2), 16);
-                const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-                return brightness < 128;
-            }
         }
 
-        // Initialize the Ultimate Pokemon Viewer when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             new UltimatePokemonViewer();
         });
