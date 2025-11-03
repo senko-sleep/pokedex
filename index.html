@@ -241,14 +241,9 @@
             transition: all 0.3s ease;
             width: 100%;
             border: 1px solid var(--border-color);
-        }
-
-        .pokemon-main-content {
             display: grid;
             grid-template-columns: auto 1fr;
             gap: 30px;
-            margin-bottom: 25px;
-            align-items: start;
         }
 
         .pokemon-left-panel {
@@ -257,6 +252,9 @@
             align-items: center;
             gap: 20px;
             width: 350px;
+            position: sticky;
+            top: 0px;
+            align-self: start;
         }
 
         .pokemon-image-container {
@@ -342,6 +340,12 @@
             height: 100%;
             object-fit: contain;
             background: var(--secondary-bg);
+        }
+
+        .pokemon-right-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .pokemon-right-panel {
@@ -513,7 +517,6 @@
             padding: 25px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
-            margin-top: 25px;
             width: 100%;
         }
 
@@ -1681,13 +1684,15 @@
 
         /* Desktop responsive adjustments */
         @media (max-width: 1200px) and (min-width: 769px) {
-            .pokemon-main-content {
+            .pokemon-card {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
             .pokemon-left-panel {
-                width: 100%;
+                position: sticky;
+                align-items: center;
+                width: calc(100% - 100px);
+                height: calc(100% - 100px);
             }
 
             .pokemon-right-panel {
@@ -1811,23 +1816,19 @@
             <div id="errorDiv" class="error-message" style="display: none;"></div>
             <div id="pokemonContainer" style="display: none;">
                 <div class="pokemon-card">
-                    <div class="pokemon-main-content">
-                        <div class="pokemon-left-panel">
-                            <div class="pokemon-image-container">
-                                <img id="pokemonImage" class="pokemon-image" alt="Pokemon Image">
-                            </div>
-                            <div class="sound-controls">
-                                <button id="playCry" class="sound-btn">🔊 Play Cry</button>
-                                <button id="playLatestCry" class="sound-btn">🎵 Latest Cry</button>
-                            </div>
-                            <div class="artwork-gallery" id="artworkGallery"></div>
-                            <div class="controls">
-                                <button id="shinyToggle" class="control-btn">✨ Toggle Shiny</button>
-                                <select id="formSelector" class="form-selector" style="display: none;">
-                                    <option value="">Select Form</option>
-                                </select>
-                            </div>
+                    <div class="pokemon-left-panel">
+                        <div class="pokemon-image-container">
+                            <img id="pokemonImage" class="pokemon-image" alt="Pokemon Image">
                         </div>
+                        <div class="sound-controls">
+                            <button id="playCry" class="sound-btn">🔊 Play Cry</button>
+                            <button id="playLatestCry" class="sound-btn">🎵 Latest Cry</button>
+                        </div>
+                      
+                        <div class="artwork-gallery" id="artworkGallery"></div>
+                        
+                    </div>
+                    <div class="pokemon-right-content">
                         <div class="pokemon-right-panel">
                             <div class="pokemon-header">
                                 <h2 id="pokemonTitle" class="pokemon-title"></h2>
@@ -1839,39 +1840,39 @@
                             <div id="abilitiesSection" class="abilities-section"></div>
                             <div class="additional-info" id="additionalInfo"></div>
                         </div>
-                    </div>
-                    <!-- Unified Container for Stats, Type Effectiveness, and Moves -->
-                    <div class="unified-info-container">
-                        <div class="info-navigation">
-                            <button class="nav-tab active" data-tab="stats">Base Stats</button>
-                            <button class="nav-tab" data-tab="types">Type Effectiveness</button>
-                            <button class="nav-tab" data-tab="moves">Moves</button>
-                        </div>
-                        <div id="statsContent" class="info-content active">
-                            <div id="statsList" class="desktop-stats-grid"></div>
-                        </div>
-                        <div id="typesContent" class="info-content">
-                            <div class="type-effectiveness">
-                                <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">Weaknesses (2x)</h4>
-                                    <div id="weaknessList" class="effectiveness-list"></div>
-                                </div>
-                                <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">Resistances (0.5x)</h4>
-                                    <div id="resistancesList" class="effectiveness-list"></div>
-                                </div>
-                                <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">Immunities (0x)</h4>
-                                    <div id="immunitiesList" class="effectiveness-list"></div>
-                                </div>
-                                <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">Strong Against (2x)</h4>
-                                    <div id="strengthsList" class="effectiveness-list"></div>
+                        <!-- Unified Container for Stats, Type Effectiveness, and Moves -->
+                        <div class="unified-info-container">
+                            <div class="info-navigation">
+                                <button class="nav-tab active" data-tab="stats">Base Stats</button>
+                                <button class="nav-tab" data-tab="types">Type Effectiveness</button>
+                                <button class="nav-tab" data-tab="moves">Moves</button>
+                            </div>
+                            <div id="statsContent" class="info-content active">
+                                <div id="statsList" class="desktop-stats-grid"></div>
+                            </div>
+                            <div id="typesContent" class="info-content">
+                                <div class="type-effectiveness">
+                                    <div class="effectiveness-section">
+                                        <h4 class="effectiveness-title">Weaknesses (2x)</h4>
+                                        <div id="weaknessList" class="effectiveness-list"></div>
+                                    </div>
+                                    <div class="effectiveness-section">
+                                        <h4 class="effectiveness-title">Resistances (0.5x)</h4>
+                                        <div id="resistancesList" class="effectiveness-list"></div>
+                                    </div>
+                                    <div class="effectiveness-section">
+                                        <h4 class="effectiveness-title">Immunities (0x)</h4>
+                                        <div id="immunitiesList" class="effectiveness-list"></div>
+                                    </div>
+                                    <div class="effectiveness-section">
+                                        <h4 class="effectiveness-title">Strong Against (2x)</h4>
+                                        <div id="strengthsList" class="effectiveness-list"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="movesContent" class="info-content">
-                            <div id="movesList" class="moves-list"></div>
+                            <div id="movesContent" class="info-content">
+                                <div id="movesList" class="moves-list"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
