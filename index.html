@@ -621,71 +621,176 @@
             color: #374151;
             border: 1px solid rgba(107, 114, 128, 0.2);
         }
+        /* Official Pokémon-style Moves List */
         .moves-list {
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 2px;
         }
         .move-item {
             background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
         .move-item:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-lg);
+            background: var(--accent-bg);
+            border-color: var(--accent-color);
         }
         .move-header {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 2fr auto auto auto auto;
             align-items: center;
-            margin-bottom: 8px;
+            padding: 12px 16px;
+            gap: 12px;
         }
         .move-name {
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .move-level {
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            text-align: center;
+            min-width: 50px;
         }
         .move-type-badge {
             padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 4px;
+            min-width: 80px;
+            justify-content: center;
         }
-        .move-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .move-stat {
-            text-align: center;
-            padding: 6px;
-            background: var(--secondary-bg);
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-        .move-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
+        .move-category {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 2px;
+            color: var(--text-muted);
         }
-        .move-stat-value {
+        .move-power, .move-accuracy {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
+            text-align: center;
+            min-width: 50px;
+        }
+        .move-details {
+            display: none;
+            padding: 0 16px 16px 16px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 8px;
+            animation: slideDown 0.2s ease;
+        }
+        .move-item.expanded .move-details {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .move-description {
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .move-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .move-stat-box {
+            background: var(--secondary-bg);
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .move-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .move-stat-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        /* Ability Info Section */
+        .abilities-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .abilities-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ability-item {
+            background: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .ability-item.hidden {
+            border-left-color: var(--warning-color);
+        }
+        .ability-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .ability-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .ability-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--warning-color);
+            color: white;
+        }
+        .ability-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         .additional-info {
             display: grid;
@@ -1115,48 +1220,65 @@
             color: var(--text-primary);
         }
         .mobile-moves-list {
-            max-height: 300px;
+            max-height: 400px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
         .mobile-move-item {
             background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+        .mobile-move-item:hover {
+            background: var(--accent-bg);
         }
         .mobile-move-header {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            margin-bottom: 8px;
+            padding: 10px 12px;
+            gap: 8px;
         }
         .mobile-move-name {
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .mobile-move-level {
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            font-size: 1rem;
-            align-items: center;
+            text-align: center;
         }
         .mobile-move-type-badge {
             padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
             display: flex;
             align-items: center;
             gap: 4px;
         }
+        .mobile-move-details {
+            display: none;
+            padding: 0 12px 12px 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        .mobile-move-item.expanded .mobile-move-details {
+            display: block;
+        }
         .mobile-move-stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 8px;
             margin-top: 8px;
         }
         .mobile-move-stat {
             text-align: center;
-            padding: 4px;
+            padding: 6px 4px;
             background: var(--secondary-bg);
             border-radius: 6px;
             border: 1px solid var(--border-color);
@@ -1169,9 +1291,18 @@
             margin-bottom: 2px;
         }
         .mobile-move-stat-value {
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--text-primary);
+        }
+        .mobile-move-description {
+            margin-top: 10px;
+            padding: 10px;
+            background: var(--secondary-bg);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
         .mobile-effectiveness-grid {
             display: grid;
@@ -1249,6 +1380,55 @@
             object-fit: contain;
             background: var(--card-bg);
         }
+        .mobile-abilities-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .mobile-abilities-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .mobile-ability-item {
+            background: var(--secondary-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent-color);
+        }
+        .mobile-ability-item.hidden {
+            border-left-color: var(--warning-color);
+        }
+        .mobile-ability-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .mobile-ability-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .mobile-ability-badge {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--warning-color);
+            color: white;
+        }
+        .mobile-ability-description {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
         /* Media Queries */
         @media (max-width: 768px) {
             .desktop-layout { display: none; }
@@ -1271,6 +1451,26 @@
                 min-width: auto;
             }
         }
+
+        /* Type colors */
+        .type-normal { background: #A8A878; color: #000; }
+        .type-fire { background: #F08030; color: #fff; }
+        .type-water { background: #6890F0; color: #fff; }
+        .type-electric { background: #F8D030; color: #000; }
+        .type-grass { background: #78C850; color: #000; }
+        .type-ice { background: #98D8D8; color: #000; }
+        .type-fighting { background: #C03028; color: #fff; }
+        .type-poison { background: #A040A0; color: #fff; }
+        .type-ground { background: #E0C068; color: #000; }
+        .type-flying { background: #A890F0; color: #000; }
+        .type-psychic { background: #F85888; color: #fff; }
+        .type-bug { background: #A8B820; color: #000; }
+        .type-rock { background: #B8A038; color: #000; }
+        .type-ghost { background: #705898; color: #fff; }
+        .type-dragon { background: #7038F8; color: #fff; }
+        .type-dark { background: #705848; color: #fff; }
+        .type-steel { background: #B8B8D0; color: #000; }
+        .type-fairy { background: #EE99AC; color: #000; }
     </style>
 </head>
 <body>
@@ -1320,15 +1520,16 @@
                                 <div id="pokemonDescription" class="pokemon-description"></div>
                             </div>
                             <div class="pokemon-details" id="pokemonDetails"></div>
+                            <div id="abilitiesSection" class="abilities-section"></div>
                             <div class="additional-info" id="additionalInfo"></div>
                         </div>
                     </div>
                     <!-- Unified Container for Stats, Type Effectiveness, and Moves -->
                     <div class="unified-info-container">
                         <div class="info-navigation">
-                            <button class="nav-tab active" data-tab="stats"> Base Stats </button>
-                            <button class="nav-tab" data-tab="types"> Type Effectiveness </button>
-                            <button class="nav-tab" data-tab="moves"> Moves </button>
+                            <button class="nav-tab active" data-tab="stats">Base Stats</button>
+                            <button class="nav-tab" data-tab="types">Type Effectiveness</button>
+                            <button class="nav-tab" data-tab="moves">Moves</button>
                         </div>
                         <div id="statsContent" class="info-content active">
                             <div id="statsList" class="desktop-stats-grid"></div>
@@ -1336,19 +1537,19 @@
                         <div id="typesContent" class="info-content">
                             <div class="type-effectiveness">
                                 <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">🛡️ Weaknesses (2x)</h4>
+                                    <h4 class="effectiveness-title">Weaknesses (2x)</h4>
                                     <div id="weaknessList" class="effectiveness-list"></div>
                                 </div>
                                 <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">💪 Resistances (0.5x)</h4>
+                                    <h4 class="effectiveness-title">Resistances (0.5x)</h4>
                                     <div id="resistancesList" class="effectiveness-list"></div>
                                 </div>
                                 <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">🚫 Immunities (0x)</h4>
+                                    <h4 class="effectiveness-title">Immunities (0x)</h4>
                                     <div id="immunitiesList" class="effectiveness-list"></div>
                                 </div>
                                 <div class="effectiveness-section">
-                                    <h4 class="effectiveness-title">⚔️ Strong Against (2x)</h4>
+                                    <h4 class="effectiveness-title">Strong Against (2x)</h4>
                                     <div id="strengthsList" class="effectiveness-list"></div>
                                 </div>
                             </div>
@@ -1399,6 +1600,7 @@
                             <div class="mobile-artwork-title">🎨 Artwork Gallery</div>
                             <div id="mobileArtworkGallery" class="mobile-artwork-gallery"></div>
                         </div>
+                        <div id="mobileAbilitiesSection" class="mobile-abilities-section"></div>
                         <div class="mobile-tabs">
                             <button class="mobile-tab active" data-tab="stats">Stats</button>
                             <button class="mobile-tab" data-tab="details">Details</button>
@@ -1437,6 +1639,7 @@
                 this.typeChart = null;
                 this.cache = new Map();
                 this.audioCache = new Map();
+                this.abilityCache = new Map();
                 this.isMobile = window.innerWidth <= 768;
                 this.activeTab = 'stats';
                 this.activeDesktopTab = 'stats';
@@ -1494,6 +1697,10 @@
                     7: 'Alola',
                     8: 'Galar',
                     9: 'Paldea'
+                };
+                this.specialNames = {
+                    'nidoran-m': 'Nidoran♂',
+                    'nidoran-f': 'Nidoran♀'
                 };
                 this.init();
             }
@@ -1644,32 +1851,70 @@
                     // Load location data
                     const locationResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/encounters`);
                     const locations = await locationResponse.json();
-                    // Load enhanced moves data (first 30 moves with full details)
+                    // Load abilities with descriptions
+                    const abilitiesData = await Promise.all(
+                        pokemon.abilities.map(async (abilityInfo) => {
+                            try {
+                                if (this.abilityCache.has(abilityInfo.ability.name)) {
+                                    return {
+                                        ...this.abilityCache.get(abilityInfo.ability.name),
+                                        is_hidden: abilityInfo.is_hidden
+                                    };
+                                }
+                                const abilityResponse = await fetch(abilityInfo.ability.url);
+                                const abilityData = await abilityResponse.json();
+                                const englishEffect = abilityData.effect_entries.find(e => e.language.name === 'en');
+                                const abilityObj = {
+                                    name: abilityData.name,
+                                    description: englishEffect ? englishEffect.short_effect : 'No description available.',
+                                    is_hidden: abilityInfo.is_hidden
+                                };
+                                this.abilityCache.set(abilityData.name, abilityObj);
+                                return abilityObj;
+                            } catch (error) {
+                                console.error(`Error loading ability ${abilityInfo.ability.name}:`, error);
+                                return {
+                                    name: abilityInfo.ability.name,
+                                    description: 'Description unavailable.',
+                                    is_hidden: abilityInfo.is_hidden
+                                };
+                            }
+                        })
+                    );
+                    // Load enhanced moves data with full details, filter to level-up only
                     const movesData = await Promise.all(
-                        pokemon.moves.slice(0, 30).map(async (move) => {
+                        pokemon.moves.map(async (move) => {
                             try {
                                 const moveResponse = await fetch(move.move.url);
                                 const moveData = await moveResponse.json();
-                                return {
-                                    ...moveData,
-                                    learn_method: move.version_group_details[0]?.move_learn_method?.name || 'unknown',
-                                    level_learned: move.version_group_details[0]?.level_learned_at || 0
-                                };
+                                // Find the first version group detail (usually earliest gen)
+                                const detail = move.version_group_details[0];
+                                if (detail && detail.move_learn_method.name === 'level-up') {
+                                    return {
+                                        ...moveData,
+                                        learn_method: detail.move_learn_method.name,
+                                        level_learned: detail.level_learned_at || 0
+                                    };
+                                }
+                                return null;
                             } catch (error) {
                                 console.error(`Error loading move ${move.move.name}:`, error);
                                 return null;
                             }
                         })
                     );
-                    // Filter out failed move loads
-                    const validMovesData = movesData.filter(move => move !== null);
+                    // Filter out non-level-up and failed loads
+                    let validMovesData = movesData.filter(move => move !== null);
+                    // Sort by level learned ascending
+                    validMovesData.sort((a, b) => a.level_learned - b.level_learned);
                     // Combine all data
                     const pokemonData = {
                         ...pokemon,
                         species: species,
                         evolutionChain: evolutionChain,
                         locations: locations,
-                        movesData: validMovesData
+                        movesData: validMovesData,
+                        abilitiesData: abilitiesData
                     };
                     this.cache.set(cacheKey, pokemonData);
                     this.currentPokemon = pokemonData;
@@ -1782,6 +2027,7 @@
                 // Display all sections
                 this.displayArtworkGallery(pokemon);
                 this.displayPokemonDetails(pokemon, details);
+                this.displayAbilities(pokemon);
                 this.displayAdditionalInfo(pokemon, additionalInfo);
                 this.displayDesktopStats(pokemon);
                 this.displayTypeEffectiveness(pokemon);
@@ -1833,6 +2079,7 @@
                     : 'No description available.';
                 // Display mobile sections
                 this.displayMobileArtworkGallery(pokemon);
+                this.displayMobileAbilities(pokemon);
                 this.displayMobileStats(pokemon);
                 this.displayMobileDetails(pokemon);
                 this.displayMobileMoves(pokemon);
@@ -1843,6 +2090,54 @@
                     shinyToggle.textContent = this.isShiny ? '✨ Normal' : '✨ Shiny';
                 }
                 container.style.display = 'block';
+            }
+
+            displayAbilities(pokemon) {
+                const section = document.getElementById('abilitiesSection');
+                if (!section) return;
+                section.innerHTML = `
+                    <div class="abilities-title">Abilities</div>
+                `;
+                if (pokemon.abilitiesData && pokemon.abilitiesData.length > 0) {
+                    pokemon.abilitiesData.forEach(ability => {
+                        const abilityItem = document.createElement('div');
+                        abilityItem.className = `ability-item ${ability.is_hidden ? 'hidden' : ''}`;
+                        abilityItem.innerHTML = `
+                            <div class="ability-header">
+                                <span class="ability-name">${this.formatPokemonName(ability.name)}</span>
+                                ${ability.is_hidden ? '<span class="ability-badge">Hidden</span>' : ''}
+                            </div>
+                            <div class="ability-description">${ability.description}</div>
+                        `;
+                        section.appendChild(abilityItem);
+                    });
+                } else {
+                    section.innerHTML += '<div class="ability-item">No abilities available</div>';
+                }
+            }
+
+            displayMobileAbilities(pokemon) {
+                const section = document.getElementById('mobileAbilitiesSection');
+                if (!section) return;
+                section.innerHTML = `
+                    <div class="mobile-abilities-title">💫 Abilities</div>
+                `;
+                if (pokemon.abilitiesData && pokemon.abilitiesData.length > 0) {
+                    pokemon.abilitiesData.forEach(ability => {
+                        const abilityItem = document.createElement('div');
+                        abilityItem.className = `mobile-ability-item ${ability.is_hidden ? 'hidden' : ''}`;
+                        abilityItem.innerHTML = `
+                            <div class="mobile-ability-header">
+                                <span class="mobile-ability-name">${this.formatPokemonName(ability.name)}</span>
+                                ${ability.is_hidden ? '<span class="mobile-ability-badge">Hidden</span>' : ''}
+                            </div>
+                            <div class="mobile-ability-description">${ability.description}</div>
+                        `;
+                        section.appendChild(abilityItem);
+                    });
+                } else {
+                    section.innerHTML += '<div class="mobile-ability-item">No abilities available</div>';
+                }
             }
 
             displayDesktopStats(pokemon) {
@@ -1936,9 +2231,7 @@
                     { label: 'Generation', value: `${generation.name}` },
                     { label: 'Region', value: region },
                     { label: 'Base Exp', value: pokemon.base_experience || 'Unknown' },
-                    { label: 'Capture Rate', value: pokemon.species.capture_rate },
-                    { label: 'Abilities', value: pokemon.abilities.filter(a => !a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') || 'None' },
-                    { label: 'Hidden', value: pokemon.abilities.filter(a => a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') || 'None' }
+                    { label: 'Capture Rate', value: pokemon.species.capture_rate }
                 ];
                 details.innerHTML = '';
                 detailsData.forEach(detail => {
@@ -1952,6 +2245,38 @@
                 });
             }
 
+            getMoveDescription(move) {
+                const englishEntry = move.flavor_text_entries.find(entry => entry.language.name === 'en');
+                return englishEntry ? englishEntry.flavor_text.replace(/\n/g, ' ').replace(/\f/g, ' ') : 'No description available.';
+            }
+
+            getTargetName(targetName) {
+                const targetMap = {
+                    'selected-pokemon': 'Selected target',
+                    'user': 'Self',
+                    'all-opponents': 'All opponents',
+                    'random-opponent': 'Random opponent',
+                    'all-other-pokemon': 'All except user',
+                    'specific-ally': 'Selected ally',
+                    'user-or-ally': 'User or ally',
+                    'all-allies': 'All allies',
+                    'entire-field': 'Entire field',
+                    'user-field': "User's side",
+                    'opponent-field': "Opponent's side"
+                };
+                return targetMap[targetName] || this.formatPokemonName(targetName);
+            }
+
+            getLearnDisplay(move) {
+                if (move.learn_method === 'level-up' && move.level_learned > 0) {
+                    return `Lv. ${move.level_learned}`;
+                } else if (move.learn_method !== 'level-up') {
+                    return this.formatPokemonName(move.learn_method);
+                } else {
+                    return '-';
+                }
+            }
+
             displayDesktopMoves(pokemon) {
                 const movesList = document.getElementById('movesList');
                 if (!movesList) return;
@@ -1960,38 +2285,51 @@
                     pokemon.movesData.forEach(move => {
                         const moveItem = document.createElement('div');
                         moveItem.className = 'move-item';
-                        const power = move.power || 'N/A';
-                        const accuracy = move.accuracy || 'N/A';
-                        const pp = move.pp || 'N/A';
+                        const power = move.power || '—';
+                        const accuracy = move.accuracy ? `${move.accuracy}%` : '—';
+                        const pp = move.pp || '—';
                         const type = move.type ? this.formatPokemonName(move.type.name) : 'Unknown';
-                        const category = move.damage_class ? this.formatPokemonName(move.damage_class.name) : 'Unknown';
+                        const category = move.damage_class ? this.formatPokemonName(move.damage_class.name) : 'Status';
+                        const learnDisplay = this.getLearnDisplay(move);
                         moveItem.innerHTML = `
                             <div class="move-header">
-                                <div class="move-name">${this.formatPokemonName(move.name)}</div>
-                                <div class="move-type-badge type-${move.type?.name || 'normal'}">
-                                    ${this.createTypeIcon(move.type?.name || 'normal').outerHTML}
-                                    <span>${type}</span>
-                                </div>
+                                <span class="move-level">${learnDisplay}</span>
+                                <span class="move-name">${this.formatPokemonName(move.name)}</span>
+                                <span class="move-type-badge type-${move.type?.name || 'normal'}">${type}</span>
+                                <span class="move-category">${category}</span>
+                                <span class="move-power">${power}</span>
+                                <span class="move-accuracy">${accuracy}</span>
                             </div>
-                            <div class="move-stats">
-                                <div class="move-stat">
-                                    <div class="move-stat-label">Power</div>
-                                    <div class="move-stat-value">${power}</div>
+                            <div class="move-details">
+                                <div class="move-stats-grid">
+                                    <div class="move-stat-box">
+                                        <div class="move-stat-label">Power</div>
+                                        <div class="move-stat-value">${power}</div>
+                                    </div>
+                                    <div class="move-stat-box">
+                                        <div class="move-stat-label">Accuracy</div>
+                                        <div class="move-stat-value">${accuracy}</div>
+                                    </div>
+                                    <div class="move-stat-box">
+                                        <div class="move-stat-label">PP</div>
+                                        <div class="move-stat-value">${pp}</div>
+                                    </div>
+                                    <div class="move-stat-box">
+                                        <div class="move-stat-label">Priority</div>
+                                        <div class="move-stat-value">${move.priority || 0}</div>
+                                    </div>
+                                    <div class="move-stat-box">
+                                        <div class="move-stat-label">Target</div>
+                                        <div class="move-stat-value">${this.getTargetName(move.target?.name || 'Unknown')}</div>
+                                    </div>
                                 </div>
-                                <div class="move-stat">
-                                    <div class="move-stat-label">Accuracy</div>
-                                    <div class="move-stat-value">${accuracy}%</div>
-                                </div>
-                                <div class="move-stat">
-                                    <div class="move-stat-label">PP</div>
-                                    <div class="move-stat-value">${pp}</div>
-                                </div>
-                                <div class="move-stat">
-                                    <div class="move-stat-label">Category</div>
-                                    <div class="move-stat-value">${category}</div>
-                                </div>
+                                <div class="move-description">${this.getMoveDescription(move)}</div>
                             </div>
                         `;
+                        // Toggle details on click
+                        moveItem.addEventListener('click', () => {
+                            moveItem.classList.toggle('expanded');
+                        });
                         movesList.appendChild(moveItem);
                     });
                 } else {
@@ -2004,37 +2342,55 @@
                 if (!movesList) return;
                 movesList.innerHTML = '';
                 if (pokemon.movesData && pokemon.movesData.length > 0) {
-                    pokemon.movesData.slice(0, 15).forEach(move => {
+                    pokemon.movesData.forEach(move => {
                         const moveItem = document.createElement('div');
                         moveItem.className = 'mobile-move-item';
-                        const power = move.power || 'N/A';
-                        const accuracy = move.accuracy || 'N/A';
-                        const pp = move.pp || 'N/A';
+                        const power = move.power || '—';
+                        const accuracy = move.accuracy ? `${move.accuracy}%` : '—';
+                        const pp = move.pp || '—';
                         const type = move.type ? this.formatPokemonName(move.type.name) : 'Unknown';
+                        const category = move.damage_class ? this.formatPokemonName(move.damage_class.name) : 'Status';
+                        const learnDisplay = this.getLearnDisplay(move);
                         moveItem.innerHTML = `
                             <div class="mobile-move-header">
-                                <div class="mobile-move-name">${this.formatPokemonName(move.name)}</div>
-                                <div class="mobile-move-type-badge type-${move.type?.name || 'normal'}">
-                                    ${this.createTypeIcon(move.type?.name || 'normal').outerHTML}
-                                    <span>${type}</span>
-                                    
-                                </div>
+                                <span class="mobile-move-level">${learnDisplay}</span>
+                                <span class="mobile-move-name">${this.formatPokemonName(move.name)}</span>
+                                <span class="mobile-move-type-badge type-${move.type?.name || 'normal'}">${type}</span>
                             </div>
-                            <div class="mobile-move-stats">
-                                <div class="mobile-move-stat">
-                                    <div class="mobile-move-stat-label">Power</div>
-                                    <div class="mobile-move-stat-value">${power}</div>
+                            <div class="mobile-move-details">
+                                <div class="mobile-move-stats">
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">Category</div>
+                                        <div class="mobile-move-stat-value">${category}</div>
+                                    </div>
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">Power</div>
+                                        <div class="mobile-move-stat-value">${power}</div>
+                                    </div>
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">Accuracy</div>
+                                        <div class="mobile-move-stat-value">${accuracy}</div>
+                                    </div>
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">PP</div>
+                                        <div class="mobile-move-stat-value">${pp}</div>
+                                    </div>
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">Priority</div>
+                                        <div class="mobile-move-stat-value">${move.priority || 0}</div>
+                                    </div>
+                                    <div class="mobile-move-stat">
+                                        <div class="mobile-move-stat-label">Target</div>
+                                        <div class="mobile-move-stat-value">${this.getTargetName(move.target?.name || 'Unknown')}</div>
+                                    </div>
                                 </div>
-                                <div class="mobile-move-stat">
-                                    <div class="mobile-move-stat-label">Acc</div>
-                                    <div class="mobile-move-stat-value">${accuracy}%</div>
-                                </div>
-                                <div class="mobile-move-stat">
-                                    <div class="mobile-move-stat-label">PP</div>
-                                    <div class="mobile-move-stat-value">${pp}</div>
-                                </div>
+                                <div class="mobile-move-description">${this.getMoveDescription(move)}</div>
                             </div>
                         `;
+                        // Toggle details on click
+                        moveItem.addEventListener('click', () => {
+                            moveItem.classList.toggle('expanded');
+                        });
                         movesList.appendChild(moveItem);
                     });
                 } else {
@@ -2161,8 +2517,6 @@
                     { label: 'Weight', value: `${(pokemon.weight / 10).toFixed(1)} kg` },
                     { label: 'Base Experience', value: pokemon.base_experience || 'Unknown' },
                     { label: 'Generation', value: `${generation.name} (${region})` },
-                    { label: 'Abilities', value: pokemon.abilities.filter(a => !a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') },
-                    { label: 'Hidden Abilities', value: pokemon.abilities.filter(a => a.is_hidden).map(a => this.formatPokemonName(a.ability.name)).join(', ') || 'None' },
                     { label: 'Capture Rate', value: pokemon.species.capture_rate },
                     { label: 'Base Happiness', value: pokemon.species.base_happiness },
                     { label: 'Growth Rate', value: this.formatPokemonName(pokemon.species.growth_rate.name) },
@@ -2436,6 +2790,7 @@
             }
 
             formatPokemonName(name) {
+                if (this.specialNames[name]) return this.specialNames[name];
                 return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
             }
 
@@ -2465,6 +2820,15 @@
                 const mobileErrorDiv = document.getElementById('mobileErrorDiv');
                 if (errorDiv) errorDiv.style.display = 'none';
                 if (mobileErrorDiv) mobileErrorDiv.style.display = 'none';
+            }
+
+            isColorDark(color) {
+                const hex = color.replace('#', '');
+                const r = parseInt(hex.substr(0, 2), 16);
+                const g = parseInt(hex.substr(2, 2), 16);
+                const b = parseInt(hex.substr(4, 2), 16);
+                const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+                return brightness < 128;
             }
         }
 
